@@ -1,20 +1,33 @@
 package board;
+
 import piece.Piece;
 
 public class Loc {
-	private int rank;
-	private int file;
+	private int row;
+	private int column;
 	private Piece piece;
-	public int getRank(){
-		return rank;
+
+	public int getRow() {
+		return row;
 	}
-	public int getFile(){
-		return file;
+
+	public int getColumn() {
+		return column;
 	}
-	public Piece getPiece(){
+
+	public void setRow(int i) {
+		row = i;
+	}
+
+	public void setColumn(int i) {
+		column = i;
+	}
+
+	public Piece getPiece() {
 		return piece;
 	}
-	public void setPiece(Piece p){
+
+	public void setPiece(Piece p) {
 		piece = p;
 	}
 }

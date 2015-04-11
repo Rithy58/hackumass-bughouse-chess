@@ -1,8 +1,7 @@
 package board;
+import util.Constants;
 
 public class Game {
-	
-	private final int NUM_TEAMS = 2;
 	
 	private Board[] boards;
 	/*
@@ -13,10 +12,10 @@ public class Game {
 	
 	public Game() {
 		
-		boards = new Board[NUM_TEAMS];
-		holdings = new Holding[NUM_TEAMS][2];
+		boards = new Board[Constants.NUM_TEAMS];
+		holdings = new Holding[Constants.NUM_TEAMS][2];
 		
-		for (int i = 0; i < NUM_TEAMS; i++) {
+		for (int i = 0; i < Constants.NUM_TEAMS; i++) {
 			boards[i] = new Board();
 			for (int j = 0; j < 2; j++)
 				//fix this

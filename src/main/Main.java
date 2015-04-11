@@ -18,7 +18,8 @@ public class Main {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 		} catch (Exception e) {
 			System.err.println("Exception.\nError code: Richard is not sure whats going on.");
+			e.printStackTrace();
 		}
-		new ServerUI();
+		new MainMenu();
 	}
 }

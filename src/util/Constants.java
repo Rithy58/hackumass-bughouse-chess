@@ -6,6 +6,8 @@ public class Constants {
 	public static final int BROADCAST_PORT = 4443;
 	
 	public static int NUM_PLAYERS = 4;
+	public static String name = "";
+	
 	public final static int NUM_TEAMS = 2;
 	public final static int BOARD_SIZE = 8;
 }

@@ -37,7 +37,7 @@ public class GUI {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setResizable(false);
-		frame.setBounds(500, 500, 1000, 500);
+		frame.setBounds(500, 500, 1500, 500);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new GridLayout(1,2));
 		
@@ -45,6 +45,11 @@ public class GUI {
 		Panel panel = new Panel();
 		panel.setLayout(new GridLayout(8,8));
 		frame.getContentPane().add(panel);
+		
+		JPanel space = new JPanel();
+		space.setBackground(Color.PINK);
+		frame.getContentPane().add(space);
+		space.setLayout(new GridLayout(1, 0, 0, 0));
 		
 		Panel panel_1 = new Panel();
 		panel_1.setLayout(new GridLayout(8, 8));
@@ -55,6 +60,14 @@ public class GUI {
 			for(int j = 0; j < Constants.BOARD_SIZE; j++){
 				pieces[i][j] = new JButton();
 				panel.add(pieces[i][j]);
+			}
+		}
+		
+		JButton[][] pieces2 = new JButton[Constants.BOARD_SIZE][Constants.BOARD_SIZE];
+		for(int i = 0; i < Constants.BOARD_SIZE; i++){
+			for(int j = 0; j < Constants.BOARD_SIZE; j++){
+				pieces2[i][j] = new JButton();
+				panel_1.add(pieces2[i][j]);
 			}
 		}
 		

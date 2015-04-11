@@ -37,15 +37,23 @@ public class GUI {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setResizable(false);
-		frame.setBounds(500, 500, 500, 500);
+		frame.setBounds(500, 500, 1000, 500);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(new GridLayout(8,8,0,0));
+		
+		
+		Panel panel = new Panel();
+		panel.setLayout(new GridLayout(1,1,0,0));
+		frame.getContentPane().add(panel);
+		
+		Panel panel_1 = new Panel();
+		frame.getContentPane().add(panel_1);
+		panel_1.setLayout(new GridLayout(1, 0, 0, 0));
 		
 		JButton[][] pieces = new JButton[Constants.BOARD_SIZE][Constants.BOARD_SIZE];
 		for(int i = 0; i < Constants.BOARD_SIZE; i++){
 			for(int j = 0; j < Constants.BOARD_SIZE; j++){
 				pieces[i][j] = new JButton();
-				frame.getContentPane().add(pieces[i][j]);
+				panel.add(pieces[i][j]);
 			}
 		}
 		

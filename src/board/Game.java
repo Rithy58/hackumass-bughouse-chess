@@ -19,7 +19,8 @@ public class Game {
 		for (int i = 0; i < NUM_TEAMS; i++) {
 			boards[i] = new Board();
 			for (int j = 0; j < 2; j++)
-				holdings[i][j] = new Holding();
+				//fix this
+				holdings[i][j] = new Holding(null);
 		}
 	}
 	

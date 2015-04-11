@@ -65,6 +65,9 @@ public class ClientUI extends JFrame {
 				String ipAddress = null;
 				if (rdbtnManualConnection.isSelected()) {
 					ipAddress = textField.getText();
+					//TODO test code
+					new Client(ipAddress);
+					JOptionPane.showMessageDialog(getParent(), "Connected I guess?");
 				} else if (rdbtnSelectAServer.isSelected()) {
 					ipAddress = (String) (listModel.getElementAt(list
 							.getLeadSelectionIndex()));

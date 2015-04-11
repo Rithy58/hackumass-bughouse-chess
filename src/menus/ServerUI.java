@@ -14,7 +14,6 @@ import communicator.Server;
 
 public class ServerUI extends JFrame{
 	
-	private JPanel contentPane;
 	private Game game;
 	private Server server;
 	public static DefaultListModel listModel;
@@ -22,18 +21,25 @@ public class ServerUI extends JFrame{
 	public static JTextField playersTextField;
 
 	public ServerUI() {
-		setTitle("Bughouse");
+		setTitle("Bughouse server");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(300, 500);
 		setLocationRelativeTo(null);
-		contentPane = new JPanel();
+		JPanel contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
+		System.out.println("1");
 		
 		JLabel lblPlayers = new JLabel("Players:");
 		lblPlayers.setBounds(47, 290, 33, 20);
 		contentPane.add(lblPlayers);
+		
+		System.out.println("2");
+		contentPane.validate();
+		System.out.println("3");
 		
 		playersTextField = new JTextField();
 		playersTextField.setBounds(80, 290, 86, 20);
@@ -42,7 +48,7 @@ public class ServerUI extends JFrame{
 		
 		server = new Server();
 		game = new Game();
-		//TODO threading
+		new Thread(new InitializeGame()).start();
 		
 		JButton btnStartGame = new JButton("Start Game");
 		btnStartGame.addActionListener(new ActionListener() {
@@ -81,5 +87,12 @@ public class ServerUI extends JFrame{
 		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		list.setBounds(47, 50, 200, 225);
 		contentPane.add(list);
+		
+		System.out.println("4");
+	}
+	
+	private class InitializeGame implements Runnable {
+		public void run() {
+		}
 	}
 }

@@ -22,4 +22,6 @@ public class Game {
 				holdings[i][j] = new Holding();
 		}
 	}
+	
+	
 }

@@ -14,7 +14,6 @@ public class Server implements Communicator {
 	private ServerSocket broadcastSocket = null;
 	private ServerSocket serverSocket = null;
 
-<<<<<<< HEAD
 	private ArrayList<Socket> clientSockets = null;
 	private ArrayList<ObjectOutputStream> objOutputs = null;
 	private ArrayList<ObjectInputStream> objInputs = null;
@@ -72,16 +71,9 @@ public class Server implements Communicator {
 		objOutputs.set(client, null);
 		objInputs.set(client, null);
 		clientSockets.set(client, null);
-=======
-	@Override
-	public void sendObject(Object o) {
-		// TODO Auto-generated method stub
-
->>>>>>> origin/master
 	}
 
 	public void close() {
-<<<<<<< HEAD
 		try {
 			for (int i = 0; i < clientSockets.size(); i++) {
 				objOutputs.get(i).close();
@@ -94,11 +86,6 @@ public class Server implements Communicator {
 			System.out.println("Sockets failed to close.\nError code: Richard really needs his sleep.");
 			e.printStackTrace();
 		}
-		
-=======
-		// TODO Auto-generated method stub
-
->>>>>>> origin/master
 	}
 	
 	public void getGame(Game game) {

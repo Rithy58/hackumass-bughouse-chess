@@ -3,16 +3,19 @@ package board;
 import piece.Piece;
 
 public class Board {
-	private final int size = 8;
+	private final int boardSize = 8;
+	private final int playerSize = 2;
 	private Loc[][] loc;
+	private Holding[] holding;
 	
 	public Board() {
-		loc = new Loc[size][size];
-		for(int r = 0; r < size; r++) {
-			for(int c = 0; c < size; c++){
+		loc = new Loc[boardSize][boardSize];
+		for(int r = 0; r < boardSize; r++) {
+			for(int c = 0; c < boardSize; c++){
 				loc[r][c] = new Loc(r, c);
 			}
 		}
+		holding = new Holding[2];
 	}
 
 	public Piece getPiece(int row, int column) {

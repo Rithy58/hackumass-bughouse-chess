@@ -16,6 +16,8 @@ public class ServerUI extends JFrame{
 	
 	private Game game;
 	private Server server;
+	
+	private JPanel contentPane;
 	public static DefaultListModel listModel;
 	private JList list;
 	public static JTextField playersTextField;
@@ -26,20 +28,14 @@ public class ServerUI extends JFrame{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(300, 500);
 		setLocationRelativeTo(null);
-		JPanel contentPane = new JPanel();
+		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		System.out.println("1");
-		
 		JLabel lblPlayers = new JLabel("Players:");
 		lblPlayers.setBounds(47, 290, 33, 20);
 		contentPane.add(lblPlayers);
-		
-		System.out.println("2");
-		contentPane.validate();
-		System.out.println("3");
 		
 		playersTextField = new JTextField();
 		playersTextField.setBounds(80, 290, 86, 20);
@@ -87,8 +83,6 @@ public class ServerUI extends JFrame{
 		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		list.setBounds(47, 50, 200, 225);
 		contentPane.add(list);
-		
-		System.out.println("4");
 	}
 	
 	private class InitializeGame implements Runnable {

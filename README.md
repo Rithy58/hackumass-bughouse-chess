@@ -2,5 +2,6 @@
 First Hackathon Project
 
 Authors:
-Richard Cui
-Diane Tam
+*Richard Cui
+*Diane Tam
+*SeihakRithy Muth

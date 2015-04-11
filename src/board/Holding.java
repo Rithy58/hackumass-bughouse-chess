@@ -9,6 +9,10 @@ public class Holding {
 	private Player player;
 	private List<Piece> pieces;
 	
+	public Holding() {
+		
+	}
+	
 	public Holding(Player player) {
 		this.player = player;
 	}

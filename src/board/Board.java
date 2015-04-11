@@ -1,6 +1,6 @@
 package board;
 
-import piece.Piece;
+import piece.*;
 
 public class Board {
 	private final int boardSize = 8;
@@ -38,11 +38,48 @@ public class Board {
 	
 	//TODO
 	public void move(int iRow, int iColumn, int fRow, int fColumn){
+		Loc start = loc[iRow][iColumn];
+		Loc end = loc[fRow][fColumn];
+		boolean[] valid = isValidMove(iRow, iColumn, fRow, fColumn);
 		
+		if (!valid[0]) return;
+		else if (valid[1]) {
+			end.setColumn(-1);
+			end.setRow(-1);
+		}
 	}
 	
 	//TODO
-	public boolean isValid(int iRow, int iColumn, int fRow, int fColumn){
-		return false;
+	public boolean[] isValidMove(int iRow, int iColumn, int fRow, int fColumn){
+		Piece moving = loc[iRow][iColumn].getPiece();
+		boolean[] valid = {false, false};
+		int scl = moving.getColor();
+		
+		if (moving instanceof Pawn && moving.getColor() == 0) {
+			if (!moving.getMoved() && 
+					iRow == fRow && iColumn == fColumn - 2*scl && 
+					loc[iRow][iColumn - scl].getPiece() == null && loc[iRow][fColumn].getPiece() == null) {
+				valid[0] = true;
+				valid[1] = false;
+			}
+			else if (moving.getMoved() && 
+					iRow == fRow - 1 && iColumn == fColumn - 1 &&
+					loc[fRow][fColumn].getPiece() != null) {
+				valid[0] = true;
+				valid[1] = true;
+			}
+//			else if (moving.getMoved() &&
+//					iRow == fRow + 1&& iColumn == fColumn - 1 &&
+//					)
+		}
+		return valid;
+	}
+	
+	public Holding getWhiteHolding() {
+		return holding[0];
+	}
+	
+	public Holding getBlackHolding() {
+		return holding[1];
 	}
 }

@@ -6,6 +6,11 @@ public class Loc {
 	private int row;
 	private int column;
 	private Piece piece;
+	
+	public Loc(int r, int c){
+		row = r;
+		column = c;
+	}
 
 	public int getRow() {
 		return row;

@@ -1,3 +1,6 @@
+/**
+ * @author Richard Cui
+ */
 package communicator;
 
 public interface Communicator {

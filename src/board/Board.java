@@ -6,6 +6,7 @@ import util.Constants;
 public class Board {
 	private Loc[][] loc;
 	private Holding[] holding;
+	private int turn;
 
 	public Board() {
 		loc = new Loc[Constants.BOARD_SIZE][Constants.BOARD_SIZE];
@@ -15,6 +16,10 @@ public class Board {
 			}
 		}
 		holding = new Holding[Constants.NUM_TEAMS * 2];
+	}
+
+	public void init() {
+
 	}
 
 	public Piece getPiece(int row, int column) {
@@ -34,12 +39,20 @@ public class Board {
 	public void passToHolding(Piece p, Holding h) {
 		h.addPiece(p);
 	}
-	
+
 	public Loc getLoc(int row, int column) {
 		return loc[row][column];
 	}
-	
+
 	public void setLoc(Loc l, int row, int column) {
 		loc[row][column] = l;
+	}
+
+	public int getTurn() {
+		return turn;
+	}
+
+	public void setTurn(int i) {
+		turn = i;
 	}
 }

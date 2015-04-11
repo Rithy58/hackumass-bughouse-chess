@@ -12,13 +12,13 @@ public class Server implements Communicator {
 	@Override
 	public void sendObject(Object o) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void close() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

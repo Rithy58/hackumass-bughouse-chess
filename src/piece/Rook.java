@@ -5,9 +5,9 @@ public class Rook extends Piece {
 	private boolean moved;
 	private int color;
 	private boolean promoted;
-	
+
 	public Rook(int color) {
-		
+
 		this.color = color;
 		moved = false;
 		promoted = false;

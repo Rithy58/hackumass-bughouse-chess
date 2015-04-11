@@ -5,9 +5,9 @@ public class Queen extends Piece {
 	private boolean moved;
 	private int color;
 	private boolean promoted;
-	
+
 	public Queen(int color) {
-		
+
 		this.color = color;
 		moved = false;
 		promoted = false;

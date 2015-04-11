@@ -17,13 +17,13 @@ import util.Constants;
 import communicator.Client;
 
 public class ClientUI extends JFrame {
-	
+
 	private JPanel contentPane;
 	private JTextField textField;
 	private JRadioButton rdbtnSelectAServer, rdbtnManualConnection;
 	private JList list;
 	private DefaultListModel listModel;
-	
+
 	public ClientUI() {
 		setTitle("Bughouse client");
 		setResizable(false);
@@ -34,7 +34,7 @@ public class ClientUI extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JButton btnExit = new JButton("Exit");
 		btnExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -43,7 +43,7 @@ public class ClientUI extends JFrame {
 		});
 		btnExit.setBounds(117, 436, 60, 25);
 		contentPane.add(btnExit);
-		
+
 		rdbtnSelectAServer = new JRadioButton("Select a server from the list:");
 		rdbtnSelectAServer.setBounds(66, 25, 161, 25);
 		contentPane.add(rdbtnSelectAServer);
@@ -51,34 +51,35 @@ public class ClientUI extends JFrame {
 		rdbtnManualConnection = new JRadioButton("Manual Connection:");
 		rdbtnManualConnection.setBounds(87, 325, 120, 25);
 		contentPane.add(rdbtnManualConnection);
-		
+
 		buttonGroup();
 
 		textField = new JTextField();
 		textField.setBounds(47, 355, 200, 25);
 		contentPane.add(textField);
 		textField.setColumns(10);
-		
+
 		JButton btnConnect = new JButton("Connect");
 		btnConnect.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				String ipAddress = null;
 				if (rdbtnManualConnection.isSelected()) {
 					ipAddress = textField.getText();
-					//TODO test code
+					// TODO test code
 					new Client(ipAddress);
-					JOptionPane.showMessageDialog(getParent(), "Connected I guess?");
+					JOptionPane.showMessageDialog(getParent(),
+							"Connected I guess?");
 				} else if (rdbtnSelectAServer.isSelected()) {
 					ipAddress = (String) (listModel.getElementAt(list
 							.getLeadSelectionIndex()));
 				}
-				//TODO start game
+				// TODO start game
 				setVisible(false);
 			}
 		});
 		btnConnect.setBounds(47, 400, 200, 25);
 		contentPane.add(btnConnect);
-		
+
 		JButton btnScanForGames = new JButton("Scan for games");
 		btnScanForGames.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -88,20 +89,20 @@ public class ClientUI extends JFrame {
 		});
 		btnScanForGames.setBounds(47, 290, 200, 25);
 		contentPane.add(btnScanForGames);
-		
+
 		listModel = new DefaultListModel();
 		list = new JList(listModel);
 		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		list.setBounds(47, 50, 200, 225);
 		contentPane.add(list);
 	}
-	
+
 	private void buttonGroup() {
 		ButtonGroup serverSelect = new ButtonGroup();
 		serverSelect.add(rdbtnManualConnection);
 		serverSelect.add(rdbtnSelectAServer);
 	}
-	
+
 	private static boolean portIsOpen(String ip, int port, int timeout) {
 		try {
 			Socket socket = new Socket();
@@ -112,16 +113,18 @@ public class ClientUI extends JFrame {
 			return false;
 		}
 	}
-	
+
 	private void scanForGames(int timeout) {
 		try {
 			String ipAddress = InetAddress.getLocalHost().getHostAddress();
-			String beginningIp = ipAddress.substring(0, ipAddress.lastIndexOf(".") + 1);
+			String beginningIp = ipAddress.substring(0,
+					ipAddress.lastIndexOf(".") + 1);
 			for (int i = 0; i < 255; i++) {
-				if(i%50 == 0){
+				if (i % 50 == 0) {
 					System.out.println(beginningIp + i);
 				}
-				if (portIsOpen(beginningIp + i, Constants.BROADCAST_PORT, timeout)) {
+				if (portIsOpen(beginningIp + i, Constants.BROADCAST_PORT,
+						timeout)) {
 					listModel.addElement("" + beginningIp + i);
 				}
 			}

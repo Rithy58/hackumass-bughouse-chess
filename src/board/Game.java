@@ -28,10 +28,10 @@ public class Game {
 	public void move(Board b, int iRow, int iColumn, int fRow, int fColumn) {
 		Piece p = b.getPiece(iRow, iColumn);
 		if (p instanceof Pawn) {
-			if(p.getColor() == 1){
-				
+			if (p.getColor() == 1) {
+
 			} else {
-				
+
 			}
 
 		} else if (p instanceof Knight) {

@@ -12,11 +12,11 @@ import board.Game;
 import util.Constants;
 import communicator.Server;
 
-public class ServerUI extends JFrame{
-	
+public class ServerUI extends JFrame {
+
 	private Game game;
 	private Server server;
-	
+
 	private JPanel contentPane;
 	public static DefaultListModel listModel;
 	private JList list;
@@ -32,25 +32,27 @@ public class ServerUI extends JFrame{
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JLabel lblPlayers = new JLabel("Players:");
 		lblPlayers.setBounds(47, 290, 33, 20);
 		contentPane.add(lblPlayers);
-		
+
 		playersTextField = new JTextField();
 		playersTextField.setBounds(80, 290, 86, 20);
 		contentPane.add(playersTextField);
 		playersTextField.setColumns(10);
-		
+
 		server = new Server();
 		game = new Game();
 		new Thread(new InitializeGame()).start();
-		
+
 		JButton btnStartGame = new JButton("Start Game");
 		btnStartGame.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if (server.getNumClients() == 0) {
-					JOptionPane.showMessageDialog(getParent(), "Cannot start.\nError code: Richard wishes he had friends.");
+					JOptionPane
+							.showMessageDialog(getParent(),
+									"Cannot start.\nError code: Richard wishes he had friends.");
 					return;
 				}
 				try {
@@ -60,15 +62,16 @@ public class ServerUI extends JFrame{
 					else
 						System.out.println("Using default players");
 				} catch (NumberFormatException e) {
-					System.out.println("Try typing a number next time; using default players");
+					System.out
+							.println("Try typing a number next time; using default players");
 				}
-				//TODO ready up?
+				// TODO ready up?
 				setVisible(false);
 			}
 		});
 		btnStartGame.setBounds(47, 400, 200, 25);
 		contentPane.add(btnStartGame);
-		
+
 		JButton btnExit = new JButton("Exit");
 		btnExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -77,14 +80,14 @@ public class ServerUI extends JFrame{
 		});
 		btnExit.setBounds(117, 436, 60, 25);
 		contentPane.add(btnExit);
-		
+
 		listModel = new DefaultListModel();
 		list = new JList(listModel);
 		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		list.setBounds(47, 50, 200, 225);
 		contentPane.add(list);
 	}
-	
+
 	private class InitializeGame implements Runnable {
 		public void run() {
 		}

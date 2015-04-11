@@ -12,26 +12,28 @@ import java.net.UnknownHostException;
 import util.Constants;
 
 public class Client implements Communicator {
-	
+
 	private final String HOST;
 	private Socket socket = null;
 	private ObjectOutputStream objOutput = null;
 	private ObjectInputStream objInput = null;
-	
+
 	int writeCount = 0;
-	
+
 	public Client(String ip) {
 		HOST = ip;
-		
+
 		try {
 			socket = new Socket(HOST, Constants.PORT);
 			objOutput = new ObjectOutputStream(socket.getOutputStream());
 			objInput = new ObjectInputStream(socket.getInputStream());
 		} catch (UnknownHostException e) {
-			System.err.println("Host " + HOST + " not found.\nError code: Richard abducted by aliens.");
-			
+			System.err.println("Host " + HOST
+					+ " not found.\nError code: Richard abducted by aliens.");
+
 		} catch (IOException e) {
-			System.err.println("Couldn't get I/O for the connection to: " + HOST + ".");
+			System.err.println("Couldn't get I/O for the connection to: "
+					+ HOST + ".");
 			System.exit(0);
 		}
 	}
@@ -49,7 +51,7 @@ public class Client implements Communicator {
 		}
 		return ret;
 	}
-	
+
 	public synchronized void sendObject(Object o) {
 		try {
 			objOutput.writeUnshared(o);
@@ -62,7 +64,7 @@ public class Client implements Communicator {
 		}
 
 	}
-	
+
 	public void close() {
 		try {
 			objOutput.close();

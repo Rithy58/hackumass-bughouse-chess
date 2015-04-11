@@ -13,11 +13,12 @@ public class Main {
 		for (String string : args) {
 			System.out.println(string + " ");
 		}
-		
+
 		try {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 		} catch (Exception e) {
-			System.err.println("Exception.\nError code: Richard is not sure whats going on.");
+			System.err
+					.println("Exception.\nError code: Richard is not sure whats going on.");
 			e.printStackTrace();
 		}
 		new MainMenu();

@@ -14,7 +14,7 @@ import util.Constants;
 public class MainMenu extends JFrame {
 
 	public static JTextField nameTextField;
-	
+
 	public MainMenu() {
 		setTitle("Bughouse | Version 0.0");
 		setResizable(false);
@@ -25,14 +25,14 @@ public class MainMenu extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JLabel lblUName = new JLabel("Username:");
 		lblUName.setBounds(121, 45, 52, 14);
 		nameTextField = new JTextField();
 		nameTextField.setBounds(104, 67, 86, 20);
 		contentPane.add(nameTextField);
 		nameTextField.setColumns(10);
-		
+
 		JButton btnStartServer = new JButton("Start server.");
 		btnStartServer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -46,7 +46,8 @@ public class MainMenu extends JFrame {
 								ServerUI frame = new ServerUI();
 								frame.setVisible(true);
 							} catch (Exception e) {
-								System.out.println("Exception?\nError code: Don't ask Richard because he doesn't know");
+								System.out
+										.println("Exception?\nError code: Don't ask Richard because he doesn't know");
 								e.printStackTrace();
 							}
 						}
@@ -57,7 +58,7 @@ public class MainMenu extends JFrame {
 		});
 		btnStartServer.setBounds(97, 364, 100, 25);
 		contentPane.add(btnStartServer);
-		
+
 		JButton btnStartClient = new JButton("Start client.");
 		btnStartClient.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -71,7 +72,8 @@ public class MainMenu extends JFrame {
 								ClientUI frame = new ClientUI();
 								frame.setVisible(true);
 							} catch (Exception e) {
-								System.err.println("Exception.\nError Code: Richard is trapped in N. Korea send help.");
+								System.err
+										.println("Exception.\nError Code: Richard is trapped in N. Korea send help.");
 								e.printStackTrace();
 							}
 						}
@@ -82,17 +84,17 @@ public class MainMenu extends JFrame {
 		});
 		btnStartClient.setBounds(97, 400, 100, 25);
 		contentPane.add(btnStartClient);
-		
+
 		JButton btnOptions = new JButton("Options");
 		btnOptions.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-					JOptionPane.showMessageDialog(getParent(), "JUST KIDDING");
-					setVisible(false);
+				JOptionPane.showMessageDialog(getParent(), "JUST KIDDING");
+				setVisible(false);
 			}
 		});
 		btnOptions.setBounds(37, 436, 100, 25);
 		contentPane.add(btnOptions);
-		
+
 		JButton btnQuitGame = new JButton("Quit Game");
 		btnQuitGame.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {

@@ -28,7 +28,7 @@ public class Server implements Communicator {
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
-			System.out.println("Connection lost: server.");
+			System.err.println("Connection lost: server.");
 			removeFromClients(client);
 			e.printStackTrace();
 		}
@@ -47,8 +47,11 @@ public class Server implements Communicator {
 		if (objOutputs.get(client) != null) {
 			try {
 				objOutputs.get(client).writeUnshared(o);
+				if (writeCount > 1000)
+					reset();
+				writeCount++;
 			} catch (IOException e) {
-				System.out.println("Connection lost: server.");
+				System.err.println("Connection lost: server.");
 				removeFromClients(client);
 				e.printStackTrace();
 			}
@@ -58,10 +61,12 @@ public class Server implements Communicator {
 	public synchronized void reset() {
 		for (int i = 0; i < objOutputs.size(); i++) {
 			try {
-				if (objOutputs.get(i) != null)
+				if (objOutputs.get(i) != null) {
 					objOutputs.get(i).reset();
+					writeCount = 0;
+				}
 			} catch (IOException e) {
-				System.out.println("Reset is broken.\nError code: Richard is too tired to code properly.");
+				System.err.println("Reset is broken.\nError code: Richard is too tired to code properly.");
 				e.printStackTrace();
 			}
 		}
@@ -83,12 +88,12 @@ public class Server implements Communicator {
 			}
 			serverSocket.close();
 		} catch (IOException e) {
-			System.out.println("Sockets failed to close.\nError code: Richard really needs his sleep.");
+			System.err.println("Sockets failed to close.\nError code: Richard really needs his sleep.");
 			e.printStackTrace();
 		}
 	}
 	
-	public void getGame(Game game) {
+	public void setGame(Game game) {
 		this.game = game;
 	}
 	

@@ -1,13 +1,13 @@
 package piece;
 
 public class Pawn extends Piece {
-	
+
 	private boolean moved;
 	private int color;
 	private boolean promoted;
-	
+
 	public Pawn(int color) {
-		
+
 		this.color = color;
 		moved = false;
 		promoted = false;

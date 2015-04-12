@@ -271,13 +271,13 @@ public class GUI extends TimerTask {
 					int h;
 					Piece captured = game.getBoard(board).getPiece(row, column);
 					if (board == 0 && captured.getColor() == 0)
-						h = 0;
+						h = 1;
 					else if (board == 0)
 						h = 3;
 					else if (board == 1 && captured.getColor() == 0)
 						h = 2;
 					else
-						h = 1;
+						h = 0;
 					game.passToHolding(captured, game.getHolding(h));
 					game.getBoard(board).removePiece(row, column);
 					game.move(board, savedRow, savedColumn, row, column);

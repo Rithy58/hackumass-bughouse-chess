@@ -24,6 +24,7 @@ public class RunServer implements Runnable{
 			
 			if (o instanceof Game) {
 				this.game = (Game) o;
+				server.sendObject(game);
 			} else {
 				game.resetConnections();
 			}

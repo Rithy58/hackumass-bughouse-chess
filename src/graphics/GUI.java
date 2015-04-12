@@ -20,6 +20,10 @@ public class GUI extends TimerTask {
 	private int savedRow, savedColumn;
 	private JButton[][] pieces = new JButton[Constants.BOARD_SIZE][Constants.BOARD_SIZE];
 	private JButton[][] pieces2 = new JButton[Constants.BOARD_SIZE][Constants.BOARD_SIZE];
+	private JButton[][] hold1 = new JButton[Constants.BOARD_SIZE][4];
+	private JButton[][] hold2 = new JButton[Constants.BOARD_SIZE][4];
+	private JButton[][] hold3 = new JButton[Constants.BOARD_SIZE][4];
+	private JButton[][] hold4 = new JButton[Constants.BOARD_SIZE][4];
 
 	/**
 	 * Create the application.
@@ -41,7 +45,7 @@ public class GUI extends TimerTask {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JLabel lblPlayer = new JLabel("Player 1");
+		JLabel lblPlayer = new JLabel("Player 4");
 		lblPlayer.setForeground(new Color(245, 255, 250));
 		lblPlayer.setFont(new Font("AR JULIAN", Font.BOLD, 24));
 		lblPlayer.setHorizontalAlignment(SwingConstants.CENTER);
@@ -65,7 +69,6 @@ public class GUI extends TimerTask {
 		holding1.setLayout(new GridLayout(8, 4));
 		space.add(holding1);
 
-		JButton[][] hold1 = new JButton[Constants.BOARD_SIZE][4];
 		for (int i = 0; i < Constants.BOARD_SIZE; i++) {
 			for (int j = 0; j < 4; j++) {
 				hold1[i][j] = new JButton();
@@ -80,7 +83,7 @@ public class GUI extends TimerTask {
 		holding2.setLayout(new GridLayout(8, 4));
 		space.add(holding2);
 
-		JButton[][] hold2 = new JButton[Constants.BOARD_SIZE][4];
+		
 		for (int i = 0; i < Constants.BOARD_SIZE; i++) {
 			for (int j = 0; j < 4; j++) {
 				hold2[i][j] = new JButton();
@@ -94,7 +97,6 @@ public class GUI extends TimerTask {
 		holding3.setBackground(new Color(128, 128, 128));
 		holding3.setLayout(new GridLayout(8, 4));
 		space.add(holding3);
-		JButton[][] hold3 = new JButton[Constants.BOARD_SIZE][4];
 		for (int i = 0; i < Constants.BOARD_SIZE; i++) {
 			for (int j = 0; j < 4; j++) {
 				hold3[i][j] = new JButton();
@@ -109,7 +111,6 @@ public class GUI extends TimerTask {
 		holding4.setLayout(new GridLayout(8, 4));
 		space.add(holding4);
 
-		JButton[][] hold4 = new JButton[Constants.BOARD_SIZE][4];
 		for (int i = 0; i < Constants.BOARD_SIZE; i++) {
 			for (int j = 0; j < 4; j++) {
 				hold4[i][j] = new JButton();
@@ -130,14 +131,14 @@ public class GUI extends TimerTask {
 		label.setBounds(680, 656, 400, 50);
 		frame.getContentPane().add(label);
 		
-		JLabel lblNewLabel_1 = new JLabel("Player 3");
+		JLabel lblNewLabel_1 = new JLabel("Player 2");
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1.setForeground(new Color(245, 255, 250));
 		lblNewLabel_1.setFont(new Font("AR JULIAN", Font.BOLD, 24));
 		lblNewLabel_1.setBounds(20, 656, 400, 50);
 		frame.getContentPane().add(lblNewLabel_1);
 		
-		JLabel lblNewLabel = new JLabel("Player 2");
+		JLabel lblNewLabel = new JLabel("Player 3");
 		lblNewLabel.setFont(new Font("AR JULIAN", Font.BOLD, 24));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setForeground(new Color(245, 255, 250));
@@ -198,6 +199,38 @@ public class GUI extends TimerTask {
 									+ game.getBoard(1).getPiece(i, j)
 											.getImage() + ".png")));
 				}
+			}
+		}
+		int i = 0;
+		while(i < game.getHolding(0).getPieces().size()){
+			if(i > 3){
+				hold1[i/4][i%4].setIcon(new ImageIcon(getClass().getResource(
+						"images/" + game.getHolding(0).getPieces().get(i).getImage()
+						+ "_sm.png")));
+			}
+		}
+		i = 0;
+		while(i < game.getHolding(1).getPieces().size()){
+			if(i > 3){
+				hold1[i/4][i%4].setIcon(new ImageIcon(getClass().getResource(
+						"images/" + game.getHolding(1).getPieces().get(i).getImage()
+						+ "_sm.png")));
+			}
+		}
+		i = 0;
+		while(i < game.getHolding(2).getPieces().size()){
+			if(i > 3){
+				hold1[i/4][i%4].setIcon(new ImageIcon(getClass().getResource(
+						"images/" + game.getHolding(2).getPieces().get(i).getImage()
+						+ "_sm.png")));
+			}
+		}
+		i = 0;
+		while(i < game.getHolding(3).getPieces().size()){
+			if(i > 3){
+				hold1[i/4][i%4].setIcon(new ImageIcon(getClass().getResource(
+						"images/" + game.getHolding(3).getPieces().get(i).getImage()
+						+ "_sm.png")));
 			}
 		}
 	}

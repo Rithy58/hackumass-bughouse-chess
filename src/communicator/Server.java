@@ -37,7 +37,8 @@ public class Server implements Communicator {
 
 			new Thread(new Broadcast()).start();
 		} catch (IOException e) {
-			System.err.println("Theres always an exception for a rule.\nError code: Richard was too dumb to notice he didn't have a constructor.");
+			System.err
+					.println("Theres always an exception for a rule.\nError code: Richard was too dumb to notice he didn't have a constructor.");
 			e.printStackTrace();
 		}
 	}
@@ -89,7 +90,7 @@ public class Server implements Communicator {
 				}
 			} catch (IOException e) {
 				System.err
-				.println("Reset is broken.\nError code: Richard is too tired to code properly.");
+						.println("Reset is broken.\nError code: Richard is too tired to code properly.");
 				e.printStackTrace();
 			}
 		}
@@ -112,15 +113,15 @@ public class Server implements Communicator {
 			serverSocket.close();
 		} catch (IOException e) {
 			System.err
-			.println("Sockets failed to close.\nError code: Richard really needs his sleep.");
+					.println("Sockets failed to close.\nError code: Richard really needs his sleep.");
 			e.printStackTrace();
 		}
 	}
 
-	public void cleanUp(){
+	public void cleanUp() {
 		int size = clientSockets.size();
-		for(int i = 0; i < size; i++) {
-			if(clientSockets.get(i) == null){
+		for (int i = 0; i < size; i++) {
+			if (clientSockets.get(i) == null) {
 				objOutputs.remove(i);
 				objInputs.remove(i);
 				clientSockets.remove(i);

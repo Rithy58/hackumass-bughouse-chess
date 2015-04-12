@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 import piece.Piece;
 
-public class Loc implements Serializable{
+public class Loc implements Serializable {
 	/**
 	 * 
 	 */

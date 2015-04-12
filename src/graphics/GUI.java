@@ -36,7 +36,7 @@ public class GUI extends TimerTask {
 		Timer timer = new Timer();
 		timer.scheduleAtFixedRate(this, 0, 100);
 	}
-	
+
 	public GUI(Game game) {
 		initialize();
 		this.game = game;
@@ -54,7 +54,7 @@ public class GUI extends TimerTask {
 		frame.setBounds(0, 0, 1105, 800);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-		
+
 		JLabel lblPlayer = new JLabel("Player 4");
 		lblPlayer.setForeground(new Color(245, 255, 250));
 		lblPlayer.setFont(new Font("AR JULIAN", Font.BOLD, 24));
@@ -84,7 +84,8 @@ public class GUI extends TimerTask {
 				hold1[i][j] = new JButton();
 				holding1.add(hold1[i][j]);
 				hold1[i][j].setBackground(new Color(230, 230, 250));
-				hold1[i][j].addActionListener(new HoldingButtonListener(3, i, j));
+				hold1[i][j]
+						.addActionListener(new HoldingButtonListener(3, i, j));
 			}
 		}
 
@@ -94,13 +95,13 @@ public class GUI extends TimerTask {
 		holding2.setLayout(new GridLayout(8, 4));
 		space.add(holding2);
 
-		
 		for (int i = 0; i < Constants.BOARD_SIZE; i++) {
 			for (int j = 0; j < 4; j++) {
 				hold2[i][j] = new JButton();
 				holding2.add(hold2[i][j]);
 				hold2[i][j].setBackground(new Color(250, 250, 210));
-				hold2[i][j].addActionListener(new HoldingButtonListener(2, i, j));
+				hold2[i][j]
+						.addActionListener(new HoldingButtonListener(2, i, j));
 			}
 		}
 
@@ -114,7 +115,8 @@ public class GUI extends TimerTask {
 				hold3[i][j] = new JButton();
 				holding3.add(hold3[i][j]);
 				hold3[i][j].setBackground(new Color(240, 255, 240));
-				hold3[i][j].addActionListener(new HoldingButtonListener(0, i, j));
+				hold3[i][j]
+						.addActionListener(new HoldingButtonListener(0, i, j));
 			}
 		}
 
@@ -129,7 +131,8 @@ public class GUI extends TimerTask {
 				hold4[i][j] = new JButton();
 				holding4.add(hold4[i][j]);
 				hold4[i][j].setBackground(new Color(255, 240, 245));
-				hold4[i][j].addActionListener(new HoldingButtonListener(1, i, j));
+				hold4[i][j]
+						.addActionListener(new HoldingButtonListener(1, i, j));
 			}
 		}
 
@@ -137,28 +140,28 @@ public class GUI extends TimerTask {
 		panel_1.setLayout(new GridLayout(8, 8));
 		panel_1.setBounds(680, 250, 400, 400);
 		frame.getContentPane().add(panel_1);
-		
+
 		JLabel label = new JLabel("Player 2");
 		label.setHorizontalAlignment(SwingConstants.CENTER);
 		label.setForeground(new Color(245, 255, 250));
 		label.setFont(new Font("AR JULIAN", Font.BOLD, 24));
 		label.setBounds(680, 656, 400, 50);
 		frame.getContentPane().add(label);
-		
+
 		JLabel lblNewLabel_1 = new JLabel("Player 1");
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1.setForeground(new Color(245, 255, 250));
 		lblNewLabel_1.setFont(new Font("AR JULIAN", Font.BOLD, 24));
 		lblNewLabel_1.setBounds(20, 656, 400, 50);
 		frame.getContentPane().add(lblNewLabel_1);
-		
+
 		JLabel lblNewLabel = new JLabel("Player 3");
 		lblNewLabel.setFont(new Font("AR JULIAN", Font.BOLD, 24));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setForeground(new Color(245, 255, 250));
 		lblNewLabel.setBounds(680, 194, 400, 50);
 		frame.getContentPane().add(lblNewLabel);
-		
+
 		JLabel lblBughouseChess = new JLabel("Bughouse Chess");
 		lblBughouseChess.setHorizontalAlignment(SwingConstants.CENTER);
 		lblBughouseChess.setForeground(new Color(245, 255, 250));
@@ -217,31 +220,35 @@ public class GUI extends TimerTask {
 			}
 		}
 		int i = 0;
-		while(i < game.getHolding(3).getPieces().size()){
-				hold1[i/4][i%4].setIcon(new ImageIcon(getClass().getResource(
-						"images/" + game.getHolding(3).getPieces().get(i).getImage()
-						+ "_sm.png")));
+		while (i < game.getHolding(3).getPieces().size()) {
+			hold1[i / 4][i % 4].setIcon(new ImageIcon(getClass().getResource(
+					"images/"
+							+ game.getHolding(3).getPieces().get(i).getImage()
+							+ "_sm.png")));
 			i++;
 		}
 		i = 0;
-		while(i < game.getHolding(2).getPieces().size()){
-				hold2[i/4][i%4].setIcon(new ImageIcon(getClass().getResource(
-						"images/" + game.getHolding(2).getPieces().get(i).getImage()
-						+ "_sm.png")));
+		while (i < game.getHolding(2).getPieces().size()) {
+			hold2[i / 4][i % 4].setIcon(new ImageIcon(getClass().getResource(
+					"images/"
+							+ game.getHolding(2).getPieces().get(i).getImage()
+							+ "_sm.png")));
 			i++;
 		}
 		i = 0;
-		while(i < game.getHolding(0).getPieces().size()){
-				hold3[i/4][i%4].setIcon(new ImageIcon(getClass().getResource(
-						"images/" + game.getHolding(0).getPieces().get(i).getImage()
-						+ "_sm.png")));
+		while (i < game.getHolding(0).getPieces().size()) {
+			hold3[i / 4][i % 4].setIcon(new ImageIcon(getClass().getResource(
+					"images/"
+							+ game.getHolding(0).getPieces().get(i).getImage()
+							+ "_sm.png")));
 			i++;
 		}
 		i = 0;
-		while(i < game.getHolding(1).getPieces().size()){
-				hold4[i/4][i%4].setIcon(new ImageIcon(getClass().getResource(
-						"images/" + game.getHolding(1).getPieces().get(i).getImage()
-						+ "_sm.png")));
+		while (i < game.getHolding(1).getPieces().size()) {
+			hold4[i / 4][i % 4].setIcon(new ImageIcon(getClass().getResource(
+					"images/"
+							+ game.getHolding(1).getPieces().get(i).getImage()
+							+ "_sm.png")));
 			i++;
 		}
 	}
@@ -264,14 +271,14 @@ public class GUI extends TimerTask {
 					savedColumn = column;
 					state = 1;
 				}
-			} else if(state == 1){
+			} else if (state == 1) {
 				if (game.getBoard(board).getPiece(row, column) == null) {
 					// move
 					game.move(board, savedRow, savedColumn, row, column);
 					state = 0;
 				} else {
 					// captured
-					int h = 4; //it should change or something went wrong.
+					int h = 4; // it should change or something went wrong.
 					Piece captured = game.getBoard(board).getPiece(row, column);
 					if (board == 0 && captured.getColor() == 0)
 						h = 2;
@@ -287,15 +294,15 @@ public class GUI extends TimerTask {
 					state = 0;
 
 				}
-			} else if(state == 2){
+			} else if (state == 2) {
 				game.getBoard(board).placePiece(savedPiece, row, column);
 				state = 0;
 			}
 		}
 	}
-	
+
 	private class HoldingButtonListener implements ActionListener {
-		private int holding,i,j;
+		private int holding, i, j;
 
 		public HoldingButtonListener(int holding, int i, int j) {
 			this.holding = holding;
@@ -306,10 +313,14 @@ public class GUI extends TimerTask {
 		public void actionPerformed(ActionEvent e) {
 			savedPiece = game.getHolding(holding).getPieces().get(i * 4 + j);
 			game.getHolding(holding).removePiece(savedPiece);
-			hold1[game.getHolding(3).getPieces().size()/4][game.getHolding(3).getPieces().size()%4].setIcon(null);
-			hold2[game.getHolding(2).getPieces().size()/4][game.getHolding(2).getPieces().size()%4].setIcon(null);
-			hold3[game.getHolding(0).getPieces().size()/4][game.getHolding(0).getPieces().size()%4].setIcon(null);
-			hold4[game.getHolding(1).getPieces().size()/4][game.getHolding(1).getPieces().size()%4].setIcon(null);
+			hold1[game.getHolding(3).getPieces().size() / 4][game.getHolding(3)
+					.getPieces().size() % 4].setIcon(null);
+			hold2[game.getHolding(2).getPieces().size() / 4][game.getHolding(2)
+					.getPieces().size() % 4].setIcon(null);
+			hold3[game.getHolding(0).getPieces().size() / 4][game.getHolding(0)
+					.getPieces().size() % 4].setIcon(null);
+			hold4[game.getHolding(1).getPieces().size() / 4][game.getHolding(1)
+					.getPieces().size() % 4].setIcon(null);
 			state = 2;
 		}
 	}

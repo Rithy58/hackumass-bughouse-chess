@@ -10,8 +10,8 @@ import piece.*;
 import util.*;
 import communicator.*;
 
-public class Game implements Serializable{
-	
+public class Game implements Serializable {
+
 	/**
 	 * 
 	 */
@@ -30,15 +30,14 @@ public class Game implements Serializable{
 			boards[i] = new Board();
 		for (int i = 0; i < Constants.NUM_PLAYERS; i++)
 			holdings[i] = new Holding();
-		
+
 		if (comm instanceof Client) {
 			System.out.println("client?");
 			initClient();
-		}
-		else
+		} else
 			System.out.println("I'm a server!");
 	}
-	
+
 	public Game(Communicator comm) {
 		boards = new Board[Constants.NUM_TEAMS];
 		holdings = new Holding[Constants.NUM_PLAYERS];
@@ -49,13 +48,12 @@ public class Game implements Serializable{
 			holdings[i] = new Holding();
 		this.comm = comm;
 	}
-	
+
 	public void start() {
 		if (comm instanceof Client) {
 			System.out.println("I'm a client!");
 			initClient();
-		}
-		else
+		} else
 			System.out.println("I'm a server!");
 	}
 
@@ -122,17 +120,19 @@ public class Game implements Serializable{
 		/*
 		 * This bit of code below doesn't work...I dunno why
 		 */
-//		if (iRow == fRow && iColumn == fColumn){
-//			return;
-//		}
-//		else{
-		/*Piece removed = boards[b].removePiece(iRow, iColumn);
-		Piece captured = boards[b].getPiece(fRow, fColumn); 
-		if (captured == new Queen(1)) // set as new Queen for testing purposes...can we not have a "null" piece?s
-			passToHolding(captured, holdings[1]);
-		boards[b].placePiece(removed, fRow,fColumn);
-		System.out.println("Holdings:" + getHolding(1).getPieces());*/
-		}
+		// if (iRow == fRow && iColumn == fColumn){
+		// return;
+		// }
+		// else{
+		/*
+		 * Piece removed = boards[b].removePiece(iRow, iColumn); Piece captured
+		 * = boards[b].getPiece(fRow, fColumn); if (captured == new Queen(1)) //
+		 * set as new Queen for testing purposes...can we not have a "null"
+		 * piece?s passToHolding(captured, holdings[1]);
+		 * boards[b].placePiece(removed, fRow,fColumn);
+		 * System.out.println("Holdings:" + getHolding(1).getPieces());
+		 */
+	}
 
 	public boolean isValidMove(int row, int column) {
 		return true;
@@ -149,30 +149,30 @@ public class Game implements Serializable{
 	public Holding getHolding(int holding) {
 		return holdings[holding];
 	}
-	
-	//start of netcode
+
+	// start of netcode
 	public void ready() {
 		ready = true;
 	}
-	
+
 	public void setCommunicator(Communicator comm) {
 		this.comm = comm;
 	}
-	
+
 	public Communicator getCommunicator() {
 		return comm;
 	}
-	
+
 	public void resetConnections() {
 		((Server) comm).reset();
 		comm.sendObject(this);
 	}
-	
+
 	private void initClient() {
 		Object o;
 		new Thread(new RunClient((Client) comm, this)).start();
 	}
-	
+
 	public void initServer() {
 		while (!ready) { // wait until server says ready
 			try {
@@ -181,19 +181,19 @@ public class Game implements Serializable{
 				e.printStackTrace();
 			}
 		}
-		
+
 		if (comm instanceof Server) {
 			((Server) comm).setGame(this);
 			comm.sendObject("testing");
 			((Server) comm).cleanUp();
 		}
-		
+
 		int players = ((Server) comm).getNumClients() + 1;
-		
+
 		comm.sendObject(this);
-		
+
 		for (int i = 0; i < players; i++)
 			new Thread(new RunServer((Server) comm, i, this)).start();
 	}
-	
+
 }

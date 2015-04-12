@@ -5,7 +5,7 @@ import java.io.Serializable;
 import piece.Piece;
 import util.Constants;
 
-public class Board implements Serializable{
+public class Board implements Serializable {
 	/**
 	 * 
 	 */

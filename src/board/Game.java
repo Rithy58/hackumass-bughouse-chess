@@ -79,7 +79,7 @@ public class Game {
 	}
 
 	public void move(int b, int iRow, int iColumn, int fRow, int fColumn) {
-//		boards[b].removePiece(fRow, fColumn);
+		// boards[b].removePiece(fRow, fColumn);
 		boards[b].placePiece(boards[b].removePiece(iRow, iColumn), fRow,
 				fColumn);
 	}

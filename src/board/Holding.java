@@ -31,7 +31,7 @@ public class Holding {
 	public void setPieces(List<Piece> pieces) {
 		this.pieces = pieces;
 	}
-	
+
 	public void init() {
 		pieces = new ArrayList<Piece>();
 	}

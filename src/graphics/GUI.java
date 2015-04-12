@@ -18,8 +18,6 @@ public class GUI extends TimerTask {
 	private JButton[][] pieces = new JButton[Constants.BOARD_SIZE][Constants.BOARD_SIZE];
 	private JButton[][] pieces2 = new JButton[Constants.BOARD_SIZE][Constants.BOARD_SIZE];
 
-	//ImageIcon black_bishop_sm = new ImageIcon(getClass().getResource("black_bishop_sm.png"));
-
 	/**
 	 * Create the application.
 	 */
@@ -53,9 +51,7 @@ public class GUI extends TimerTask {
 		JPanel holding1 = new JPanel();
 		holding1.setBackground(Color.GREEN);
 		holding1.setLayout(new GridLayout(8, 4));
-		//holding1.setBounds(0,800,400,400);
 		space.add(holding1);
-		
 
 		JButton[][] hold1 = new JButton[Constants.BOARD_SIZE][4];
 		for (int i = 0; i < Constants.BOARD_SIZE; i++) {
@@ -69,7 +65,6 @@ public class GUI extends TimerTask {
 		JPanel holding2 = new JPanel();
 		holding2.setBackground(Color.MAGENTA);
 		holding2.setLayout(new GridLayout(8, 4));
-		//holding2.setBounds(100,100,100,100);
 		space.add(holding2);
 
 		JButton[][] hold2 = new JButton[Constants.BOARD_SIZE][4];
@@ -97,7 +92,6 @@ public class GUI extends TimerTask {
 		JPanel holding4 = new JPanel();
 		holding4.setBackground(Color.PINK);
 		holding4.setLayout(new GridLayout(8, 4));
-		//holding4.setBounds(200,200,100,100);
 		space.add(holding4);
 
 		JButton[][] hold4 = new JButton[Constants.BOARD_SIZE][4];
@@ -111,7 +105,7 @@ public class GUI extends TimerTask {
 
 		Panel panel_1 = new Panel();
 		panel_1.setLayout(new GridLayout(8, 8));
-		panel_1.setBounds(600,0,400,400);
+		panel_1.setBounds(600, 0, 400, 400);
 		frame.getContentPane().add(panel_1);
 
 		for (int i = 0; i < Constants.BOARD_SIZE; i++) {
@@ -145,27 +139,24 @@ public class GUI extends TimerTask {
 			for (int j = 0; j < Constants.BOARD_SIZE; j++) {
 				if (game.getBoard(0).getPiece(i, j) == null) {
 					pieces[i][j].setIcon(new ImageIcon(getClass().getResource(
-							"null.png")));
+							"images/null.png")));
 				} else {
-					pieces[i][j].setIcon(new ImageIcon(getClass()
-							.getResource(
-									game.getBoard(0).getPiece(i, j).getImage()
-											+ ".png")));
+					pieces[i][j].setIcon(new ImageIcon(getClass().getResource(
+							"images/"
+									+ game.getBoard(0).getPiece(i, j)
+											.getImage() + ".png")));
 				}
 				if (game.getBoard(1).getPiece(i, j) == null) {
 					pieces2[i][j].setIcon(new ImageIcon(getClass().getResource(
-							"null.png")));
+							"images/null.png")));
 				} else {
-					pieces2[i][j].setIcon(new ImageIcon(getClass()
-							.getResource(
-									game.getBoard(1).getPiece(i, j).getImage()
-											+ ".png")));
+					pieces2[i][j].setIcon(new ImageIcon(getClass().getResource(
+							"images/"
+									+ game.getBoard(1).getPiece(i, j)
+											.getImage() + ".png")));
 				}
 			}
 		}
-		/*
-		 * frame.validate(); frame.repaint();
-		 */
 	}
 
 	private class ButtonListener implements ActionListener {
@@ -180,38 +171,20 @@ public class GUI extends TimerTask {
 		}
 
 		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
 			if (state == 0) {
-				System.out.println("State = 0");
 				if (game.getBoard(board).getPiece(row, column) != null) {
 					savedRow = row;
 					savedColumn = column;
-					System.out.println("Saved coord");
 					state = 1;
-					System.out.println("State = 1");
 				}
 			} else {
-				System.out.println("second press");
 				if (game.getBoard(board).getPiece(row, column) == null) {
 					// move
 					game.move(board, savedRow, savedColumn, row, column);
-					System.out.println("moved");
 					state = 0;
 				} else {
 					// captured
 					int h;
-//					if (game.getBoard(board).getPiece(row, column)
-//							.getColor() == 0) {
-//						h = 0;
-//					} else {
-//						h = 1;
-//					}
-//					int b;
-//					if (board == 0) {
-//						b = 1;
-//					} else {
-//						b = 0;
-//					}
 					Piece captured = game.getBoard(board).getPiece(row, column);
 					if (board == 0 && captured.getColor() == 0)
 						h = 0;
@@ -223,19 +196,9 @@ public class GUI extends TimerTask {
 						h = 1;
 					game.passToHolding(captured, game.getHolding(h));
 					game.getBoard(board).removePiece(row, column);
-					System.out.println("captured");
 					game.move(board, savedRow, savedColumn, row, column);
 					state = 0;
-					
-					// remove then pass to holding
-//					game.getBoard(board).passToHolding(
-//							game.getBoard(board).removePiece(savedRow,
-//									savedColumn), game.getHolding(h));
-//					System.out.println("captured");
-					// move
-//					game.move(board, savedRow, savedColumn, row, column);
-//					System.out.println("moved");
-//					state = 0;
+
 				}
 			}
 		}
@@ -243,7 +206,6 @@ public class GUI extends TimerTask {
 
 	@Override
 	public void run() {
-		// TODO Auto-generated method stub
 		update();
 	}
 }

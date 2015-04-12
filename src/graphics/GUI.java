@@ -6,6 +6,7 @@ import java.util.TimerTask;
 
 import javax.swing.*;
 
+import piece.*;
 import board.Game;
 import util.Constants;
 
@@ -17,8 +18,30 @@ public class GUI extends TimerTask {
 	private JButton[][] pieces = new JButton[Constants.BOARD_SIZE][Constants.BOARD_SIZE];
 	private JButton[][] pieces2 = new JButton[Constants.BOARD_SIZE][Constants.BOARD_SIZE];
 
-	// ImageIcon black_bishop_sm = new
-	// ImageIcon(getClass().getResource("black_bishop_sm.png"));
+	/**
+	 * Initialize image icons
+	 */
+	/*
+	 * ImageIcon blank = new ImageIcon(getClass().getResource("blank.png"));
+	 * ImageIcon black_bishop = new ImageIcon(getClass().getResource(
+	 * "black_bishop.png")); ImageIcon black_king = new
+	 * ImageIcon(getClass().getResource( "black_king.png")); ImageIcon
+	 * black_knight = new ImageIcon(getClass().getResource(
+	 * "black_knight.png")); ImageIcon black_pawn = new
+	 * ImageIcon(getClass().getResource( "black_pawn.png")); ImageIcon
+	 * black_queen = new ImageIcon(getClass().getResource( "black_queen.png"));
+	 * ImageIcon black_rook = new ImageIcon(getClass().getResource(
+	 * "black_rook.png")); ImageIcon white_bishop = new
+	 * ImageIcon(getClass().getResource( "white_bishop.png")); ImageIcon
+	 * white_king = new ImageIcon(getClass().getResource( "white_king.png"));
+	 * ImageIcon white_knight = new ImageIcon(getClass().getResource(
+	 * "white_knight.png")); ImageIcon white_pawn = new
+	 * ImageIcon(getClass().getResource( "white_pawn.png")); ImageIcon
+	 * white_queen = new ImageIcon(getClass().getResource( "white_queen.png"));
+	 * ImageIcon white_rook = new ImageIcon(getClass().getResource(
+	 * "white_rook.png"));
+	 */
+	//ImageIcon black_bishop_sm = new ImageIcon(getClass().getResource("black_bishop_sm.png"));
 
 	/**
 	 * Create the application.
@@ -37,11 +60,12 @@ public class GUI extends TimerTask {
 		frame.setResizable(false);
 		frame.setBounds(0, 0, 1400, 535);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(new FlowLayout());
+		frame.getContentPane().setLayout(new GridLayout(1, 2));
 
 		Panel panel = new Panel();
 		panel.setLayout(new GridLayout(8, 8));
 		panel.setBounds(0, 0, 500, 500);
+
 		frame.getContentPane().add(panel);
 
 		JPanel space = new JPanel();
@@ -54,7 +78,6 @@ public class GUI extends TimerTask {
 		holding1.setBackground(Color.GREEN);
 		space.add(holding1);
 		holding1.setLayout(new GridLayout(8, 4));
-		
 
 		JButton[][] hold1 = new JButton[Constants.BOARD_SIZE][4];
 		for (int i = 0; i < Constants.BOARD_SIZE; i++) {
@@ -197,26 +220,42 @@ public class GUI extends TimerTask {
 				} else {
 					// captured
 					int h;
-					if (game.getBoard(board).getPiece(row, column).getColor() == 0) {
+//					if (game.getBoard(board).getPiece(row, column)
+//							.getColor() == 0) {
+//						h = 0;
+//					} else {
+//						h = 1;
+//					}
+//					int b;
+//					if (board == 0) {
+//						b = 1;
+//					} else {
+//						b = 0;
+//					}
+					Piece captured = game.getBoard(board).getPiece(row, column);
+					if (board == 0 && captured.getColor() == 0)
 						h = 0;
-					} else {
+					else if (board == 0)
+						h = 3;
+					else if (board == 1 && captured.getColor() == 0)
+						h = 2;
+					else
 						h = 1;
-					}
-					int b;
-					if (board == 0) {
-						b = 1;
-					} else {
-						b = 0;
-					}
-					// remove then pass to holding
-					game.getBoard(board).passToHolding(
-							game.getBoard(board).removePiece(savedRow,
-									savedColumn), game.getHolding(b, h));
+					game.passToHolding(captured, game.getHolding(h));
+					game.getBoard(board).removePiece(row, column);
 					System.out.println("captured");
-					// move
 					game.move(board, savedRow, savedColumn, row, column);
-					System.out.println("moved");
 					state = 0;
+					
+					// remove then pass to holding
+//					game.getBoard(board).passToHolding(
+//							game.getBoard(board).removePiece(savedRow,
+//									savedColumn), game.getHolding(h));
+//					System.out.println("captured");
+					// move
+//					game.move(board, savedRow, savedColumn, row, column);
+//					System.out.println("moved");
+//					state = 0;
 				}
 			}
 		}

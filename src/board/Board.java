@@ -34,10 +34,6 @@ public class Board {
 		return ret;
 	}
 
-	public void passToHolding(Piece p, Holding h) {
-		h.addPiece(p);
-	}
-
 	public Loc getLoc(int row, int column) {
 		return loc[row][column];
 	}

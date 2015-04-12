@@ -40,6 +40,7 @@ public class GUI extends TimerTask {
 	 * ImageIcon white_rook = new ImageIcon(getClass().getResource(
 	 * "white_rook.png"));
 	 */
+	//ImageIcon black_bishop_sm = new ImageIcon(getClass().getResource("black_bishop_sm.png"));
 
 	/**
 	 * Create the application.
@@ -72,11 +73,11 @@ public class GUI extends TimerTask {
 		JPanel holding1 = new JPanel();
 		holding1.setBackground(Color.GREEN);
 		space.add(holding1);
-		holding1.setLayout(new GridLayout(8, 8));
+		holding1.setLayout(new GridLayout(8, 4));
 
-		JButton[][] hold1 = new JButton[Constants.BOARD_SIZE][Constants.BOARD_SIZE];
+		JButton[][] hold1 = new JButton[Constants.BOARD_SIZE][4];
 		for (int i = 0; i < Constants.BOARD_SIZE; i++) {
-			for (int j = 0; j < Constants.BOARD_SIZE; j++) {
+			for (int j = 0; j < 4; j++) {
 				hold1[i][j] = new JButton();
 				holding1.add(hold1[i][j]);
 				hold1[i][j].setBackground(Color.green);
@@ -86,7 +87,7 @@ public class GUI extends TimerTask {
 		JPanel holding2 = new JPanel();
 		holding2.setBackground(Color.MAGENTA);
 		space.add(holding2);
-		holding2.setLayout(new GridLayout(8, 8));
+		holding2.setLayout(new GridLayout(8, 4));
 
 		JButton[][] hold2 = new JButton[Constants.BOARD_SIZE][Constants.BOARD_SIZE];
 		for (int i = 0; i < Constants.BOARD_SIZE; i++) {

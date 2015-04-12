@@ -51,8 +51,9 @@ public class Queen extends Piece {
 		// TODO Auto-generated method stub
 		this.promoted = promoted;
 	}
-	public String getImage(){
-		if(color == 0){
+
+	public String getImage() {
+		if (color == 0) {
 			return "white_queen";
 		} else {
 			return "black_queen";

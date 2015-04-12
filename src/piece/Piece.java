@@ -16,6 +16,6 @@ public abstract class Piece {
 	public abstract boolean getPromoted();
 
 	public abstract void setPromoted(boolean promoted);
-	
+
 	public abstract String getImage();
 }

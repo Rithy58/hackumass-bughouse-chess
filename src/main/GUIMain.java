@@ -1,7 +1,9 @@
 package main;
 
 import graphics.GUI;
+
 import java.awt.EventQueue;
+import java.util.Timer;
 
 public class GUIMain {
 
@@ -14,7 +16,8 @@ public class GUIMain {
 				try {
 					GUI window = new GUI();
 					window.frame.setVisible(true);
-					window.update();
+					Timer timer = new Timer();
+					timer.scheduleAtFixedRate(window, 0, 100);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

@@ -16,3 +16,6 @@ Win condition
 Hosting on server
 Pass data using JSON
 Rules enforcement
+
+NOTE: Fix capturing between boards. (You can "capture" a piece from the other board right now and it will disappear)
+Hopefully I don't screw the project up by attempting to fix this???

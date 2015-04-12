@@ -5,3 +5,7 @@ Authors:
 * Richard Cui
 * Diane Tam
 * SeihakRithy Muth
+
+Basic Project Goals:
+
+Stretch Project Goals:

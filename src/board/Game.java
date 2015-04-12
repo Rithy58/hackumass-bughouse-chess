@@ -35,17 +35,17 @@ public class Game {
 		boards[0].placePiece(new Rook(1), 0, 0);
 		boards[0].placePiece(new Rook(0), 7, 7);
 		boards[0].placePiece(new Rook(1), 0, 7);
-		
+
 		boards[0].placePiece(new Knight(0), 7, 1);
 		boards[0].placePiece(new Knight(1), 0, 1);
 		boards[0].placePiece(new Knight(0), 7, 6);
 		boards[0].placePiece(new Knight(1), 0, 6);
-		
+
 		boards[0].placePiece(new Bishop(0), 7, 2);
 		boards[0].placePiece(new Bishop(1), 0, 2);
 		boards[0].placePiece(new Bishop(0), 7, 5);
 		boards[0].placePiece(new Bishop(1), 0, 5);
-		
+
 		boards[0].placePiece(new Queen(0), 7, 3);
 		boards[0].placePiece(new King(1), 0, 3);
 		boards[0].placePiece(new King(0), 7, 4);
@@ -58,17 +58,17 @@ public class Game {
 		boards[1].placePiece(new Rook(0), 0, 0);
 		boards[1].placePiece(new Rook(1), 7, 7);
 		boards[1].placePiece(new Rook(0), 0, 7);
-		
+
 		boards[1].placePiece(new Knight(1), 7, 1);
 		boards[1].placePiece(new Knight(0), 0, 1);
 		boards[1].placePiece(new Knight(1), 7, 6);
 		boards[1].placePiece(new Knight(0), 0, 6);
-		
+
 		boards[1].placePiece(new Bishop(1), 7, 2);
 		boards[1].placePiece(new Bishop(0), 0, 2);
 		boards[1].placePiece(new Bishop(1), 7, 5);
 		boards[1].placePiece(new Bishop(0), 0, 5);
-		
+
 		boards[1].placePiece(new Queen(1), 7, 4);
 		boards[1].placePiece(new King(0), 0, 4);
 		boards[1].placePiece(new King(1), 7, 3);

@@ -7,10 +7,12 @@ public class onClick implements ActionListener {
 	
 	private int row;
 	private int column;
+	private int board;
 	
-	public onClick(int r, int c) {
+	public onClick(int b, int r, int c) {
 		row = r;
 		column = c;
+		board = b;
 	}
 
 	@Override

@@ -59,6 +59,7 @@ public class GUI {
 			for (int j = 0; j < Constants.BOARD_SIZE; j++) {
 				pieces[i][j] = new JButton();
 				panel.add(pieces[i][j]);
+				pieces[i][j].addActionListener(new onClick(1, i, j));
 				if ((i + j) % 2 == 0) {
 					pieces[i][j].setBackground(Color.red);
 				} else
@@ -71,6 +72,7 @@ public class GUI {
 			for (int j = 0; j < Constants.BOARD_SIZE; j++) {
 				pieces2[i][j] = new JButton();
 				panel_1.add(pieces2[i][j]);
+				pieces2[i][j].addActionListener(new onClick(2, i, j));
 				if ((i + j) % 2 == 0) {
 					pieces2[i][j].setBackground(Color.cyan);
 				} else

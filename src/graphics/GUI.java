@@ -135,14 +135,14 @@ public class GUI extends TimerTask {
 		panel_1.setBounds(680, 250, 400, 400);
 		frame.getContentPane().add(panel_1);
 		
-		JLabel label = new JLabel("Player 4");
+		JLabel label = new JLabel("Player 2");
 		label.setHorizontalAlignment(SwingConstants.CENTER);
 		label.setForeground(new Color(245, 255, 250));
 		label.setFont(new Font("AR JULIAN", Font.BOLD, 24));
 		label.setBounds(680, 656, 400, 50);
 		frame.getContentPane().add(label);
 		
-		JLabel lblNewLabel_1 = new JLabel("Player 2");
+		JLabel lblNewLabel_1 = new JLabel("Player 1");
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1.setForeground(new Color(245, 255, 250));
 		lblNewLabel_1.setFont(new Font("AR JULIAN", Font.BOLD, 24));
@@ -215,35 +215,31 @@ public class GUI extends TimerTask {
 		}
 		int i = 0;
 		while(i < game.getHolding(0).getPieces().size()){
-			//if(i > 3){
 				hold1[i/4][i%4].setIcon(new ImageIcon(getClass().getResource(
 						"images/" + game.getHolding(0).getPieces().get(i).getImage()
 						+ "_sm.png")));
-			//}
+			i++;
 		}
 		i = 0;
 		while(i < game.getHolding(1).getPieces().size()){
-			//if(i > 3){
-				hold1[i/4][i%4].setIcon(new ImageIcon(getClass().getResource(
+				hold2[i/4][i%4].setIcon(new ImageIcon(getClass().getResource(
 						"images/" + game.getHolding(1).getPieces().get(i).getImage()
 						+ "_sm.png")));
-			//}
+			i++;
 		}
 		i = 0;
 		while(i < game.getHolding(2).getPieces().size()){
-			//if(i > 3){
-				hold1[i/4][i%4].setIcon(new ImageIcon(getClass().getResource(
+				hold3[i/4][i%4].setIcon(new ImageIcon(getClass().getResource(
 						"images/" + game.getHolding(2).getPieces().get(i).getImage()
 						+ "_sm.png")));
-			//}
+			i++;
 		}
 		i = 0;
 		while(i < game.getHolding(3).getPieces().size()){
-			//if(i > 3){
-				hold1[i/4][i%4].setIcon(new ImageIcon(getClass().getResource(
+				hold4[i/4][i%4].setIcon(new ImageIcon(getClass().getResource(
 						"images/" + game.getHolding(3).getPieces().get(i).getImage()
 						+ "_sm.png")));
-			//}
+			i++;
 		}
 	}
 

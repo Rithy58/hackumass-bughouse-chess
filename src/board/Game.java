@@ -1,3 +1,6 @@
+/**
+ * @author Richard Cui, Rithy Muth
+ */
 package board;
 
 import piece.*;
@@ -6,19 +9,17 @@ import util.Constants;
 public class Game {
 
 	private Board[] boards;
-	private Holding[][] holdings;
+	private Holding[] holdings;
 
 	public Game() {
 
 		boards = new Board[Constants.NUM_TEAMS];
-		holdings = new Holding[Constants.NUM_TEAMS][2];
+		holdings = new Holding[Constants.NUM_PLAYERS];
 
-		for (int i = 0; i < Constants.NUM_TEAMS; i++) {
+		for (int i = 0; i < Constants.NUM_TEAMS; i++)
 			boards[i] = new Board();
-			for (int j = 0; j < 2; j++)
-				// fix this
-				holdings[i][j] = new Holding(null);
-		}
+		for (int i = 0; i < Constants.NUM_PLAYERS; i++)
+			holdings[i] = new Holding();
 	}
 
 	public void init() {
@@ -73,14 +74,12 @@ public class Game {
 		boards[1].placePiece(new King(0), 0, 4);
 		boards[1].placePiece(new King(1), 7, 3);
 		boards[1].placePiece(new Queen(0), 0, 3);
-		for (Holding[] hArray : holdings) {
-			for (Holding h : hArray) {
-				h = new Holding(null);
-			}
-		}
+		for (Holding h : holdings)
+			h.init();
 	}
 
 	public void move(int b, int iRow, int iColumn, int fRow, int fColumn) {
+//		boards[b].removePiece(fRow, fColumn);
 		boards[b].placePiece(boards[b].removePiece(iRow, iColumn), fRow,
 				fColumn);
 	}
@@ -97,7 +96,7 @@ public class Game {
 		return boards[i];
 	}
 
-	public Holding getHolding(int board, int holding) {
-		return holdings[board][holding];
+	public Holding getHolding(int holding) {
+		return holdings[holding];
 	}
 }

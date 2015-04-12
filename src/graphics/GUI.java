@@ -6,6 +6,7 @@ import java.util.TimerTask;
 
 import javax.swing.*;
 
+import piece.*;
 import board.Game;
 import util.Constants;
 
@@ -215,27 +216,42 @@ public class GUI extends TimerTask {
 				} else {
 					// captured
 					int h;
-					if (game.getBoard(board).getPiece(row, column)
-							.getColor() == 0) {
+//					if (game.getBoard(board).getPiece(row, column)
+//							.getColor() == 0) {
+//						h = 0;
+//					} else {
+//						h = 1;
+//					}
+//					int b;
+//					if (board == 0) {
+//						b = 1;
+//					} else {
+//						b = 0;
+//					}
+					Piece captured = game.getBoard(board).getPiece(row, column);
+					if (board == 0 && captured.getColor() == 0)
 						h = 0;
-					} else {
+					else if (board == 0)
+						h = 3;
+					else if (board == 1 && captured.getColor() == 0)
+						h = 2;
+					else
 						h = 1;
-					}
-					int b;
-					if (board == 0) {
-						b = 1;
-					} else {
-						b = 0;
-					}
-					// remove then pass to holding
-					game.getBoard(board).passToHolding(
-							game.getBoard(board).removePiece(savedRow,
-									savedColumn), game.getHolding(b, h));
+					game.passToHolding(captured, game.getHolding(h));
+					game.getBoard(board).removePiece(row, column);
 					System.out.println("captured");
-					// move
 					game.move(board, savedRow, savedColumn, row, column);
-					System.out.println("moved");
 					state = 0;
+					
+					// remove then pass to holding
+//					game.getBoard(board).passToHolding(
+//							game.getBoard(board).removePiece(savedRow,
+//									savedColumn), game.getHolding(h));
+//					System.out.println("captured");
+					// move
+//					game.move(board, savedRow, savedColumn, row, column);
+//					System.out.println("moved");
+//					state = 0;
 				}
 			}
 		}

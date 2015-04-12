@@ -2,15 +2,16 @@ package board;
 
 import piece.*;
 import player.*;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class Holding {
 
-	private Player player;
 	private List<Piece> pieces;
 
-	public Holding(Player player) {
-		this.player = player;
+	public Holding() {
+		pieces = new ArrayList<Piece>();
 	}
 
 	public void addPiece(Piece piece) {
@@ -23,19 +24,15 @@ public class Holding {
 		return pieces.get(pieces.indexOf(piece));
 	}
 
-	public Player getPlayer() {
-		return player;
-	}
-
-	public void setPlayer(Player player) {
-		this.player = player;
-	}
-
 	public List<Piece> getPieces() {
 		return pieces;
 	}
 
 	public void setPieces(List<Piece> pieces) {
 		this.pieces = pieces;
+	}
+	
+	public void init() {
+		pieces = new ArrayList<Piece>();
 	}
 }

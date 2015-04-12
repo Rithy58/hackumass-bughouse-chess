@@ -1,3 +1,6 @@
+/**
+ * @author Richard Cui
+ */
 package piece;
 
 public abstract class Piece {

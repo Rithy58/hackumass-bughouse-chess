@@ -1,3 +1,6 @@
+/**
+ * @author Richard Cui, Rithy Muth
+ */
 package util;
 
 public class Constants {

@@ -2,6 +2,7 @@ package graphics;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.util.Timer;
 import java.util.TimerTask;
 
 import javax.swing.*;
@@ -9,6 +10,7 @@ import javax.swing.*;
 import piece.*;
 import board.Game;
 import util.Constants;
+
 import javax.swing.border.SoftBevelBorder;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.LineBorder;
@@ -32,6 +34,9 @@ public class GUI extends TimerTask {
 		initialize();
 		game = new Game();
 		game.init();
+		this.frame.setVisible(true);
+		Timer timer = new Timer();
+		timer.scheduleAtFixedRate(this, 0, 100);
 	}
 	
 	public GUI(Game game) {

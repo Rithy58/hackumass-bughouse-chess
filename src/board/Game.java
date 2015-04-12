@@ -90,6 +90,8 @@ public class Game {
 
 	public void move(int b, int iRow, int iColumn, int fRow, int fColumn) {
 		// boards[b].removePiece(fRow, fColumn);
+		boards[b].placePiece(boards[b].removePiece(iRow, iColumn), fRow,
+				fColumn);
 		
 		/*
 		 * This bit of code below doesn't work...I dunno why
@@ -98,12 +100,12 @@ public class Game {
 //			return;
 //		}
 //		else{
-		Piece removed = boards[b].removePiece(iRow, iColumn);
+		/*Piece removed = boards[b].removePiece(iRow, iColumn);
 		Piece captured = boards[b].getPiece(fRow, fColumn); 
 		if (captured == new Queen(1)) // set as new Queen for testing purposes...can we not have a "null" piece?s
 			passToHolding(captured, holdings[1]);
 		boards[b].placePiece(removed, fRow,fColumn);
-		System.out.println("Holdings:" + getHolding(1).getPieces());
+		System.out.println("Holdings:" + getHolding(1).getPieces());*/
 		}
 
 	public boolean isValidMove(int row, int column) {

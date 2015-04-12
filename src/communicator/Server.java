@@ -53,12 +53,13 @@ public class Server implements Communicator {
 			removeFromClients(client);
 			e.printStackTrace();
 		}
+		System.out.println("object get");
 		return ret;
 	}
 
 	public synchronized void sendObject(Object o) {
 		for (int i = 0; i < objOutputs.size(); i++)
-			sendObject(o);
+			sendObject(o, i);
 		if (writeCount > 1000)
 			reset();
 		writeCount++;

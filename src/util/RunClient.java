@@ -22,8 +22,6 @@ public class RunClient implements Runnable{
 			o = client.getNextObject();
 			if (o instanceof Game)
 				this.game = (Game) o;
-			else if (o instanceof String)
-				System.out.println((String) o);
 		}
 	}
 }

@@ -49,6 +49,7 @@ public class Client implements Communicator {
 			e.printStackTrace();
 			System.exit(0);
 		}
+		System.out.println("object get");
 		return ret;
 	}
 

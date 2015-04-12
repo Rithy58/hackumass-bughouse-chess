@@ -1,7 +1,6 @@
 package board;
 
 import piece.*;
-import player.*;
 
 import java.io.Serializable;
 import java.util.ArrayList;

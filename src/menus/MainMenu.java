@@ -56,7 +56,7 @@ public class MainMenu extends JFrame {
 				}
 			}
 		});
-		btnStartServer.setBounds(97, 364, 100, 25);
+		btnStartServer.setBounds(47, 364, 200, 25);
 		contentPane.add(btnStartServer);
 
 		JButton btnStartClient = new JButton("Start client.");
@@ -82,7 +82,7 @@ public class MainMenu extends JFrame {
 				}
 			}
 		});
-		btnStartClient.setBounds(97, 400, 100, 25);
+		btnStartClient.setBounds(47, 400, 200, 25);
 		contentPane.add(btnStartClient);
 
 		JButton btnOptions = new JButton("Options");

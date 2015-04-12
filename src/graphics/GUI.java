@@ -69,7 +69,66 @@ public class GUI {
 		JPanel space = new JPanel();
 		space.setBackground(Color.PINK);
 		frame.getContentPane().add(space);
-		space.setLayout(new GridLayout(1, 0, 0, 0));
+		space.setLayout(new GridLayout(2, 2));
+		
+		JPanel holding1 = new JPanel();
+		holding1.setBackground(Color.GREEN);
+		space.add(holding1);
+		holding1.setLayout(new GridLayout(8,8));
+		
+		JButton[][] hold1 = new JButton[Constants.BOARD_SIZE][Constants.BOARD_SIZE];
+		for (int i = 0; i < Constants.BOARD_SIZE; i++) {
+			for (int j = 0; j < Constants.BOARD_SIZE; j++) {
+				hold1[i][j] = new JButton();
+				holding1.add(hold1[i][j]);
+				hold1[i][j].addActionListener(new ButtonListener(0, i, j));
+				hold1[i][j].setBackground(Color.green);
+			}
+		}		
+		
+		JPanel holding2 = new JPanel();
+		holding2.setBackground(Color.MAGENTA);
+		space.add(holding2);
+		holding2.setLayout(new GridLayout(8,8));
+		
+		JButton[][] hold2 = new JButton[Constants.BOARD_SIZE][Constants.BOARD_SIZE];
+		for (int i = 0; i < Constants.BOARD_SIZE; i++) {
+			for (int j = 0; j < Constants.BOARD_SIZE; j++) {
+				hold2[i][j] = new JButton();
+				holding2.add(hold2[i][j]);
+				hold2[i][j].addActionListener(new ButtonListener(0, i, j));
+				hold2[i][j].setBackground(Color.magenta);
+			}
+		}
+		
+		JPanel holding3 = new JPanel();
+		holding3.setBackground(Color.ORANGE);
+		space.add(holding3);
+		holding3.setLayout(new GridLayout(8,8));
+		JButton[][] hold3 = new JButton[Constants.BOARD_SIZE][Constants.BOARD_SIZE];
+		for (int i = 0; i < Constants.BOARD_SIZE; i++) {
+			for (int j = 0; j < Constants.BOARD_SIZE; j++) {
+				hold3[i][j] = new JButton();
+				holding3.add(hold3[i][j]);
+				hold3[i][j].addActionListener(new ButtonListener(0, i, j));
+				hold3[i][j].setBackground(Color.orange);
+			}
+		}
+		
+		JPanel holding4 = new JPanel();
+		holding4.setBackground(Color.PINK);
+		space.add(holding4);
+		holding4.setLayout(new GridLayout(8,8));
+		
+		JButton[][] hold4 = new JButton[Constants.BOARD_SIZE][Constants.BOARD_SIZE];
+		for (int i = 0; i < Constants.BOARD_SIZE; i++) {
+			for (int j = 0; j < Constants.BOARD_SIZE; j++) {
+				hold4[i][j] = new JButton();
+				holding4.add(hold4[i][j]);
+				hold4[i][j].addActionListener(new ButtonListener(0, i, j));
+				hold4[i][j].setBackground(Color.pink);
+			}
+		}
 
 		Panel panel_1 = new Panel();
 		panel_1.setLayout(new GridLayout(8, 8));
@@ -78,6 +137,7 @@ public class GUI {
 		JButton[][] pieces = new JButton[Constants.BOARD_SIZE][Constants.BOARD_SIZE];
 		for (int i = 0; i < Constants.BOARD_SIZE; i++) {
 			for (int j = 0; j < Constants.BOARD_SIZE; j++) {
+				pieces[i][j] = new JButton();
 				panel.add(pieces[i][j]);
 				pieces[i][j].addActionListener(new ButtonListener(0, i, j));
 				if ((i + j) % 2 == 0) {

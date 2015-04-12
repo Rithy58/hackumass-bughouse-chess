@@ -3,7 +3,9 @@
  */
 package piece;
 
-public abstract class Piece {
+import java.io.Serializable;
+
+public abstract class Piece implements Serializable{
 
 	public abstract boolean getMoved();
 

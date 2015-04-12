@@ -1,9 +1,15 @@
 package board;
 
+import java.io.Serializable;
+
 import piece.Piece;
 import util.Constants;
 
-public class Board {
+public class Board implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 824461096453998426L;
 	private Loc[][] loc;
 	private int turn;
 

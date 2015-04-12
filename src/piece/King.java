@@ -5,6 +5,10 @@ package piece;
 
 public class King extends Piece {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4163108823667225902L;
 	private boolean moved;
 	private int color;
 	private boolean promoted;

@@ -5,6 +5,10 @@ package piece;
 
 public class Rook extends Piece {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6482313119411686190L;
 	private boolean moved;
 	private int color;
 	private boolean promoted;

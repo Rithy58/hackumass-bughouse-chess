@@ -3,11 +3,16 @@ package board;
 import piece.*;
 import player.*;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Holding {
+public class Holding implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7699400901320471619L;
 	private List<Piece> pieces;
 
 	public Holding() {

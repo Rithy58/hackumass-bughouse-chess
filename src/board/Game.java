@@ -3,14 +3,19 @@
  */
 package board;
 
+import java.io.Serializable;
 import java.util.concurrent.TimeUnit;
 
 import piece.*;
 import util.*;
 import communicator.*;
 
-public class Game {
+public class Game implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1538311745245429946L;
 	private Board[] boards;
 	private Holding[] holdings;
 	private Communicator comm;

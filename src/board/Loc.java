@@ -1,8 +1,14 @@
 package board;
 
+import java.io.Serializable;
+
 import piece.Piece;
 
-public class Loc {
+public class Loc implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7120348557326791298L;
 	private int row;
 	private int column;
 	private Piece piece;

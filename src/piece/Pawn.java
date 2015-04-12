@@ -5,6 +5,10 @@ package piece;
 
 public class Pawn extends Piece {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2693704135674395132L;
 	private boolean moved;
 	private int color;
 	private boolean promoted;

@@ -5,6 +5,10 @@ package piece;
 
 public class Knight extends Piece {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -119788415985384543L;
 	private boolean moved;
 	private int color;
 	private boolean promoted;

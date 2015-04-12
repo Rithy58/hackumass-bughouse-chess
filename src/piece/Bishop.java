@@ -5,6 +5,10 @@ package piece;
 
 public class Bishop extends Piece {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6858511693140396800L;
 	private boolean moved;
 	private int color;
 	private boolean promoted;

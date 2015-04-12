@@ -41,6 +41,8 @@ public class GUI extends TimerTask {
 	public GUI(Game game) {
 		initialize();
 		this.game = game;
+		Timer timer = new Timer();
+		timer.scheduleAtFixedRate(this, 0, 100);
 	}
 
 	/**

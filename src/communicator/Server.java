@@ -24,17 +24,17 @@ public class Server implements Communicator {
 
 	private Game game = null;
 	private int writeCount = 0;
-	
+
 	public Server() {
 		try {
 			serverSocket = new ServerSocket(Constants.PORT);
 			clientSockets = new ArrayList<Socket>();
 			objOutputs = new ArrayList<ObjectOutputStream>();
 			objInputs = new ArrayList<ObjectInputStream>();
-		
+
 			new Thread(new Accepter()).start();
 			broadcastSocket = new ServerSocket(Constants.BROADCAST_PORT);
-		
+
 			new Thread(new Broadcast()).start();
 		} catch (IOException e) {
 			System.err.println("Theres always an exception for a rule.\nError code: Richard was too dumb to notice he didn't have a constructor.");

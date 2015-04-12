@@ -67,16 +67,19 @@ public class ClientUI extends JFrame {
 				if (rdbtnManualConnection.isSelected()) {
 					ipAddress = textField.getText();
 					// TODO test code
-					new Client(ipAddress);
+					//new Client(ipAddress);
 //					JOptionPane.showMessageDialog(getParent(),
 //							"Connected I guess?");
 				} else if (rdbtnSelectAServer.isSelected()) {
 					ipAddress = (String) (listModel.getElementAt(list
 							.getLeadSelectionIndex()));
 				}
+				System.out.println("starting game");
 				Game game = new Game();
 				game.setCommunicator(new Client(ipAddress));
+				game.init();
 				new GUI(game);
+				System.out.println("game started");
 				setVisible(false);
 			}
 		});

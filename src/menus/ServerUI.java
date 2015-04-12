@@ -3,8 +3,11 @@
  */
 package menus;
 
+import graphics.GUI;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
@@ -66,6 +69,8 @@ public class ServerUI extends JFrame {
 					System.out
 							.println("Try typing a number next time; using default players");
 				}
+				game.init();
+				new GUI(game);
 				game.ready();
 				setVisible(false);
 			}

@@ -203,35 +203,35 @@ public class GUI extends TimerTask {
 		}
 		int i = 0;
 		while(i < game.getHolding(0).getPieces().size()){
-			if(i > 3){
+			//if(i > 3){
 				hold1[i/4][i%4].setIcon(new ImageIcon(getClass().getResource(
 						"images/" + game.getHolding(0).getPieces().get(i).getImage()
 						+ "_sm.png")));
-			}
+			//}
 		}
 		i = 0;
 		while(i < game.getHolding(1).getPieces().size()){
-			if(i > 3){
+			//if(i > 3){
 				hold1[i/4][i%4].setIcon(new ImageIcon(getClass().getResource(
 						"images/" + game.getHolding(1).getPieces().get(i).getImage()
 						+ "_sm.png")));
-			}
+			//}
 		}
 		i = 0;
 		while(i < game.getHolding(2).getPieces().size()){
-			if(i > 3){
+			//if(i > 3){
 				hold1[i/4][i%4].setIcon(new ImageIcon(getClass().getResource(
 						"images/" + game.getHolding(2).getPieces().get(i).getImage()
 						+ "_sm.png")));
-			}
+			//}
 		}
 		i = 0;
 		while(i < game.getHolding(3).getPieces().size()){
-			if(i > 3){
+			//if(i > 3){
 				hold1[i/4][i%4].setIcon(new ImageIcon(getClass().getResource(
 						"images/" + game.getHolding(3).getPieces().get(i).getImage()
 						+ "_sm.png")));
-			}
+			//}
 		}
 	}
 

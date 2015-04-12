@@ -33,6 +33,11 @@ public class GUI extends TimerTask {
 		game = new Game();
 		game.init();
 	}
+	
+	public GUI(Game game) {
+		initialize();
+		this.game = game;
+	}
 
 	/**
 	 * Initialize the contents of the frame.

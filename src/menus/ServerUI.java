@@ -44,6 +44,7 @@ public class ServerUI extends JFrame {
 
 		server = new Server();
 		game = new Game();
+		game.setCommunicator(server);
 		new Thread(new InitializeGame()).start();
 
 		JButton btnStartGame = new JButton("Start Game");

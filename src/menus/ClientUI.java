@@ -15,6 +15,7 @@ import javax.swing.border.EmptyBorder;
 import board.Game;
 import util.Constants;
 import communicator.Client;
+import graphics.GUI;
 
 public class ClientUI extends JFrame {
 
@@ -67,13 +68,15 @@ public class ClientUI extends JFrame {
 					ipAddress = textField.getText();
 					// TODO test code
 					new Client(ipAddress);
-					JOptionPane.showMessageDialog(getParent(),
-							"Connected I guess?");
+//					JOptionPane.showMessageDialog(getParent(),
+//							"Connected I guess?");
 				} else if (rdbtnSelectAServer.isSelected()) {
 					ipAddress = (String) (listModel.getElementAt(list
 							.getLeadSelectionIndex()));
 				}
-				// TODO start game
+				Game game = new Game();
+				game.setCommunicator(new Client(ipAddress));
+				new GUI(game);
 				setVisible(false);
 			}
 		});

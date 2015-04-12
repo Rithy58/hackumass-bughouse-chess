@@ -171,6 +171,7 @@ public class Server implements Communicator {
 
 					System.out.println("Client " + numClients + " connected.");
 					Object name = getNextObject(numClients);
+					numClients++;
 					// TODO Add prompts for connections
 				} catch (IOException e) {
 					e.printStackTrace();

@@ -5,7 +5,6 @@ import util.Constants;
 
 public class Board {
 	private Loc[][] loc;
-	private Holding[] holding;
 	private int turn;
 
 	public Board() {
@@ -15,7 +14,6 @@ public class Board {
 				loc[r][c] = new Loc(r, c);
 			}
 		}
-		holding = new Holding[Constants.NUM_TEAMS * 2];
 	}
 
 	public void init() {

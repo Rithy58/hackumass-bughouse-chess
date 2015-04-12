@@ -1,11 +1,20 @@
 package graphics;
 
 import java.awt.*;
+import java.awt.event.*;
+
 import javax.swing.*;
+
+import board.Game;
 import util.Constants;
 
 public class GUI {
 	public JFrame frame;
+	private Game game;
+	private int board1Turn;
+	private int board2Turn;
+	private int state;
+	private int savedRow, savedColumn;
 
 	/**
 	 * Initialize image icons
@@ -69,17 +78,8 @@ public class GUI {
 		JButton[][] pieces = new JButton[Constants.BOARD_SIZE][Constants.BOARD_SIZE];
 		for (int i = 0; i < Constants.BOARD_SIZE; i++) {
 			for (int j = 0; j < Constants.BOARD_SIZE; j++) {
-				if (i == 0 && j == 0){
-					pieces[i][j] = new JButton(black_rook);
-				}
-				else if (i == 1) {
-					pieces[i][j] = new JButton(black_pawn);
-				} 
-				else {
-					pieces[i][j] = new JButton(blank);
-				}
 				panel.add(pieces[i][j]);
-				pieces[i][j].addActionListener(new onClick(1, i, j));
+				pieces[i][j].addActionListener(new ButtonListener(0, i, j));
 				if ((i + j) % 2 == 0) {
 					pieces[i][j].setBackground(Color.red);
 				} else
@@ -92,7 +92,7 @@ public class GUI {
 			for (int j = 0; j < Constants.BOARD_SIZE; j++) {
 				pieces2[i][j] = new JButton();
 				panel_1.add(pieces2[i][j]);
-				pieces2[i][j].addActionListener(new onClick(2, i, j));
+				pieces2[i][j].addActionListener(new ButtonListener(1, i, j));
 				if ((i + j) % 2 == 0) {
 					pieces2[i][j].setBackground(Color.cyan);
 				} else
@@ -102,4 +102,67 @@ public class GUI {
 
 	}
 
+	private class ButtonListener implements ActionListener {
+		private int row;
+		private int column;
+		private int board;
+		
+		public ButtonListener(int b, int r, int c) {
+			row = r;
+			column = c;
+			board = b;
+		}
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			
+			if(state == 0) {
+				if(game.getBoard(board).getPiece(row, column) != null) {
+					savedRow = row;
+					savedColumn = column;
+					state = 1;
+				}
+			} else {
+				if(game.getBoard(board).getPiece(row, column) == null) {
+					//move
+					game.move(board, savedRow, savedColumn, row, column);
+				} else {
+					//captured
+					int h;
+					if(game.getBoard(board).getPiece(savedRow, savedColumn).getColor() == 0){
+						h = 0;
+					} else {
+						h = 1;
+					}
+					int b;
+					if(board == 0){
+						b = 1;
+					} else {
+						b = 0;
+					}
+					//remove then pass to holding
+					game.getBoard(board).passToHolding(
+							game.getBoard(board).removePiece(savedRow, savedColumn)
+							, game.getHolding(b, h));
+					//move
+					game.move(board, savedRow, savedColumn, row, column);
+				}
+				state = 0;
+			}
+			
+			
+			if(game.getBoard(board).getPiece(row, column) != null) {
+				if(state == 0) {
+					savedRow = row;
+					savedColumn = column;
+				} else {
+					
+					state = 0;
+				}
+			} else {
+				
+			}
+		}
+	}
 }
+
+

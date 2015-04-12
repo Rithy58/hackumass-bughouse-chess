@@ -6,10 +6,6 @@ import util.Constants;
 public class Game {
 
 	private Board[] boards;
-	/*
-	 * 
-	 * 
-	 */
 	private Holding[][] holdings;
 
 	public Game() {
@@ -25,33 +21,21 @@ public class Game {
 		}
 	}
 
-	public void move(Board b, int iRow, int iColumn, int fRow, int fColumn) {
-		Piece p = b.getPiece(iRow, iColumn);
-		if (p instanceof Pawn) {
-			if (p.getColor() == 1) {
-
-			} else {
-
-			}
-
-		} else if (p instanceof Knight) {
-
-		} else if (p instanceof Bishop) {
-
-		} else if (p instanceof Rook) {
-
-		} else if (p instanceof Queen) {
-
-		} else if (p instanceof King) {
-
-		}
+	public void move(int b, int iRow, int iColumn, int fRow, int fColumn) {
+		boards[b].placePiece(boards[b].removePiece(iRow, iColumn), fRow, fColumn);
 	}
 
 	public boolean isValidMove(int row, int column) {
-		return false;
+		return true;
 	}
 
 	public void passToHolding(Piece p, Holding h) {
 		h.addPiece(p);
+	}
+	public Board getBoard(int i) {
+		return boards[i];
+	}
+	public Holding getHolding(int board, int holding){
+		return holdings[board][holding];
 	}
 }

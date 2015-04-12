@@ -15,7 +15,7 @@ public class Game implements Serializable{
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1538311745245429946L;
+	private static final long serialVersionUID = 7725665560866651386L;
 	private Board[] boards;
 	private Holding[] holdings;
 	private Communicator comm;
@@ -31,8 +31,30 @@ public class Game implements Serializable{
 		for (int i = 0; i < Constants.NUM_PLAYERS; i++)
 			holdings[i] = new Holding();
 		
-		if (comm instanceof Client)
+		if (comm instanceof Client) {
+			System.out.println("client?");
 			initClient();
+		}
+		else
+			System.out.println("I'm a server!");
+	}
+	
+	public Game(Communicator comm) {
+		boards = new Board[Constants.NUM_TEAMS];
+		holdings = new Holding[Constants.NUM_PLAYERS];
+
+		for (int i = 0; i < Constants.NUM_TEAMS; i++)
+			boards[i] = new Board();
+		for (int i = 0; i < Constants.NUM_PLAYERS; i++)
+			holdings[i] = new Holding();
+		this.comm = comm;
+	}
+	
+	public void start() {
+		if (comm instanceof Client) {
+			System.out.println("I'm a client!");
+			initClient();
+		}
 		else
 			System.out.println("I'm a server!");
 	}
@@ -97,7 +119,6 @@ public class Game implements Serializable{
 		// boards[b].removePiece(fRow, fColumn);
 		boards[b].placePiece(boards[b].removePiece(iRow, iColumn), fRow,
 				fColumn);
-		
 		/*
 		 * This bit of code below doesn't work...I dunno why
 		 */
@@ -149,9 +170,6 @@ public class Game implements Serializable{
 	
 	private void initClient() {
 		Object o;
-		do {
-			o = ((Client) comm).getNextObject();
-		} while (!(o instanceof Game));
 		new Thread(new RunClient((Client) comm, this)).start();
 	}
 	

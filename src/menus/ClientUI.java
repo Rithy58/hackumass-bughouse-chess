@@ -75,9 +75,9 @@ public class ClientUI extends JFrame {
 							.getLeadSelectionIndex()));
 				}
 				System.out.println("starting game");
-				Game game = new Game();
-				game.setCommunicator(new Client(ipAddress));
+				Game game = new Game(new Client(ipAddress));
 				game.init();
+				game.start();
 				new GUI(game);
 				System.out.println("game started");
 				setVisible(false);

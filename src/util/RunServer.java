@@ -21,9 +21,9 @@ public class RunServer implements Runnable{
 	public void run() {
 		while(server.getObjInputs().get(client) != null) {
 			Object o = server.getNextObject(client);
-			
 			if (o instanceof Game) {
 				this.game = (Game) o;
+				server.sendObject(o);
 			} else {
 				game.resetConnections();
 			}

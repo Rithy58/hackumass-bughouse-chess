@@ -7,6 +7,11 @@ import java.io.Serializable;
 
 public abstract class Piece implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2864418564345625663L;
+
 	public abstract boolean getMoved();
 
 	public abstract void setMoved(boolean moved);

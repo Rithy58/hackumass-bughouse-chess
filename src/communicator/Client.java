@@ -30,7 +30,7 @@ public class Client implements Communicator {
 		} catch (UnknownHostException e) {
 			System.err.println("Host " + HOST
 					+ " not found.\nError code: Richard abducted by aliens.");
-
+			System.exit(0);
 		} catch (IOException e) {
 			System.err.println("Couldn't get I/O for the connection to: "
 					+ HOST + ".");

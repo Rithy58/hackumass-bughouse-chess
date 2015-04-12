@@ -35,21 +35,20 @@ public class GUI extends TimerTask {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setResizable(false);
-		frame.setBounds(500, 500, 1500, 500);
+		frame.setBounds(0, 0, 1400, 535);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new FlowLayout());
 
 		Panel panel = new Panel();
 		panel.setLayout(new GridLayout(8, 8));
-		frame.getContentPane().add(panel);
 		panel.setBounds(0, 0, 500, 500);
-		frame.setComponentOrientation(
-                ComponentOrientation.LEFT_TO_RIGHT);
+		frame.getContentPane().add(panel);
 
 		JPanel space = new JPanel();
 		space.setBackground(Color.PINK);
-		frame.getContentPane().add(space);
 		space.setLayout(new GridLayout(2, 2));
+		space.setBounds(0, 500, 400, 400);
+		frame.getContentPane().add(space);
 
 		JPanel holding1 = new JPanel();
 		holding1.setBackground(Color.GREEN);
@@ -71,9 +70,9 @@ public class GUI extends TimerTask {
 		space.add(holding2);
 		holding2.setLayout(new GridLayout(8, 4));
 
-		JButton[][] hold2 = new JButton[Constants.BOARD_SIZE][Constants.BOARD_SIZE];
+		JButton[][] hold2 = new JButton[Constants.BOARD_SIZE][4];
 		for (int i = 0; i < Constants.BOARD_SIZE; i++) {
-			for (int j = 0; j < Constants.BOARD_SIZE; j++) {
+			for (int j = 0; j < 4; j++) {
 				hold2[i][j] = new JButton();
 				holding2.add(hold2[i][j]);
 				hold2[i][j].setBackground(Color.magenta);
@@ -83,10 +82,10 @@ public class GUI extends TimerTask {
 		JPanel holding3 = new JPanel();
 		holding3.setBackground(Color.ORANGE);
 		space.add(holding3);
-		holding3.setLayout(new GridLayout(8, 8));
-		JButton[][] hold3 = new JButton[Constants.BOARD_SIZE][Constants.BOARD_SIZE];
+		holding3.setLayout(new GridLayout(8, 4));
+		JButton[][] hold3 = new JButton[Constants.BOARD_SIZE][4];
 		for (int i = 0; i < Constants.BOARD_SIZE; i++) {
-			for (int j = 0; j < Constants.BOARD_SIZE; j++) {
+			for (int j = 0; j < 4; j++) {
 				hold3[i][j] = new JButton();
 				holding3.add(hold3[i][j]);
 				hold3[i][j].setBackground(Color.orange);
@@ -96,11 +95,11 @@ public class GUI extends TimerTask {
 		JPanel holding4 = new JPanel();
 		holding4.setBackground(Color.PINK);
 		space.add(holding4);
-		holding4.setLayout(new GridLayout(8, 8));
+		holding4.setLayout(new GridLayout(8, 4));
 
-		JButton[][] hold4 = new JButton[Constants.BOARD_SIZE][Constants.BOARD_SIZE];
+		JButton[][] hold4 = new JButton[Constants.BOARD_SIZE][4];
 		for (int i = 0; i < Constants.BOARD_SIZE; i++) {
-			for (int j = 0; j < Constants.BOARD_SIZE; j++) {
+			for (int j = 0; j < 4; j++) {
 				hold4[i][j] = new JButton();
 				holding4.add(hold4[i][j]);
 				hold4[i][j].setBackground(Color.pink);
@@ -109,6 +108,7 @@ public class GUI extends TimerTask {
 
 		Panel panel_1 = new Panel();
 		panel_1.setLayout(new GridLayout(8, 8));
+		panel_1.setBounds(0,1000,500,500);
 		frame.getContentPane().add(panel_1);
 
 		for (int i = 0; i < Constants.BOARD_SIZE; i++) {

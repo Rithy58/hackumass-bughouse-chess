@@ -18,29 +18,6 @@ public class GUI extends TimerTask {
 	private JButton[][] pieces = new JButton[Constants.BOARD_SIZE][Constants.BOARD_SIZE];
 	private JButton[][] pieces2 = new JButton[Constants.BOARD_SIZE][Constants.BOARD_SIZE];
 
-	/**
-	 * Initialize image icons
-	 */
-	/*
-	 * ImageIcon blank = new ImageIcon(getClass().getResource("blank.png"));
-	 * ImageIcon black_bishop = new ImageIcon(getClass().getResource(
-	 * "black_bishop.png")); ImageIcon black_king = new
-	 * ImageIcon(getClass().getResource( "black_king.png")); ImageIcon
-	 * black_knight = new ImageIcon(getClass().getResource(
-	 * "black_knight.png")); ImageIcon black_pawn = new
-	 * ImageIcon(getClass().getResource( "black_pawn.png")); ImageIcon
-	 * black_queen = new ImageIcon(getClass().getResource( "black_queen.png"));
-	 * ImageIcon black_rook = new ImageIcon(getClass().getResource(
-	 * "black_rook.png")); ImageIcon white_bishop = new
-	 * ImageIcon(getClass().getResource( "white_bishop.png")); ImageIcon
-	 * white_king = new ImageIcon(getClass().getResource( "white_king.png"));
-	 * ImageIcon white_knight = new ImageIcon(getClass().getResource(
-	 * "white_knight.png")); ImageIcon white_pawn = new
-	 * ImageIcon(getClass().getResource( "white_pawn.png")); ImageIcon
-	 * white_queen = new ImageIcon(getClass().getResource( "white_queen.png"));
-	 * ImageIcon white_rook = new ImageIcon(getClass().getResource(
-	 * "white_rook.png"));
-	 */
 	//ImageIcon black_bishop_sm = new ImageIcon(getClass().getResource("black_bishop_sm.png"));
 
 	/**
@@ -58,26 +35,27 @@ public class GUI extends TimerTask {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setResizable(false);
-		frame.setBounds(0, 0, 1400, 535);
+		frame.setBounds(0, 0, 1200, 425);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(new GridLayout(1, 2));
+		frame.getContentPane().setLayout(null);
 
 		Panel panel = new Panel();
 		panel.setLayout(new GridLayout(8, 8));
-		panel.setBounds(0, 0, 500, 500);
-
+		panel.setBounds(0, 0, 400, 400);
 		frame.getContentPane().add(panel);
 
 		JPanel space = new JPanel();
 		space.setBackground(Color.PINK);
 		space.setLayout(new GridLayout(2, 2));
-		space.setBounds(0, 500, 400, 400);
+		space.setBounds(400, 0, 400, 400);
 		frame.getContentPane().add(space);
 
 		JPanel holding1 = new JPanel();
 		holding1.setBackground(Color.GREEN);
-		space.add(holding1);
 		holding1.setLayout(new GridLayout(8, 4));
+		//holding1.setBounds(0,800,400,400);
+		space.add(holding1);
+		
 
 		JButton[][] hold1 = new JButton[Constants.BOARD_SIZE][4];
 		for (int i = 0; i < Constants.BOARD_SIZE; i++) {
@@ -90,8 +68,9 @@ public class GUI extends TimerTask {
 
 		JPanel holding2 = new JPanel();
 		holding2.setBackground(Color.MAGENTA);
-		space.add(holding2);
 		holding2.setLayout(new GridLayout(8, 4));
+		//holding2.setBounds(100,100,100,100);
+		space.add(holding2);
 
 		JButton[][] hold2 = new JButton[Constants.BOARD_SIZE][4];
 		for (int i = 0; i < Constants.BOARD_SIZE; i++) {
@@ -104,8 +83,8 @@ public class GUI extends TimerTask {
 
 		JPanel holding3 = new JPanel();
 		holding3.setBackground(Color.ORANGE);
-		space.add(holding3);
 		holding3.setLayout(new GridLayout(8, 4));
+		space.add(holding3);
 		JButton[][] hold3 = new JButton[Constants.BOARD_SIZE][4];
 		for (int i = 0; i < Constants.BOARD_SIZE; i++) {
 			for (int j = 0; j < 4; j++) {
@@ -117,8 +96,9 @@ public class GUI extends TimerTask {
 
 		JPanel holding4 = new JPanel();
 		holding4.setBackground(Color.PINK);
-		space.add(holding4);
 		holding4.setLayout(new GridLayout(8, 4));
+		//holding4.setBounds(200,200,100,100);
+		space.add(holding4);
 
 		JButton[][] hold4 = new JButton[Constants.BOARD_SIZE][4];
 		for (int i = 0; i < Constants.BOARD_SIZE; i++) {
@@ -131,7 +111,7 @@ public class GUI extends TimerTask {
 
 		Panel panel_1 = new Panel();
 		panel_1.setLayout(new GridLayout(8, 8));
-		panel_1.setBounds(0,1000,500,500);
+		panel_1.setBounds(800,0,400,400);
 		frame.getContentPane().add(panel_1);
 
 		for (int i = 0; i < Constants.BOARD_SIZE; i++) {

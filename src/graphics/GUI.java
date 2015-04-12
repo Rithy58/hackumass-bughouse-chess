@@ -214,30 +214,30 @@ public class GUI extends TimerTask {
 			}
 		}
 		int i = 0;
-		while(i < game.getHolding(0).getPieces().size()){
+		while(i < game.getHolding(3).getPieces().size()){
 				hold1[i/4][i%4].setIcon(new ImageIcon(getClass().getResource(
+						"images/" + game.getHolding(3).getPieces().get(i).getImage()
+						+ "_sm.png")));
+			i++;
+		}
+		i = 0;
+		while(i < game.getHolding(2).getPieces().size()){
+				hold2[i/4][i%4].setIcon(new ImageIcon(getClass().getResource(
+						"images/" + game.getHolding(2).getPieces().get(i).getImage()
+						+ "_sm.png")));
+			i++;
+		}
+		i = 0;
+		while(i < game.getHolding(0).getPieces().size()){
+				hold3[i/4][i%4].setIcon(new ImageIcon(getClass().getResource(
 						"images/" + game.getHolding(0).getPieces().get(i).getImage()
 						+ "_sm.png")));
 			i++;
 		}
 		i = 0;
 		while(i < game.getHolding(1).getPieces().size()){
-				hold2[i/4][i%4].setIcon(new ImageIcon(getClass().getResource(
-						"images/" + game.getHolding(1).getPieces().get(i).getImage()
-						+ "_sm.png")));
-			i++;
-		}
-		i = 0;
-		while(i < game.getHolding(2).getPieces().size()){
-				hold3[i/4][i%4].setIcon(new ImageIcon(getClass().getResource(
-						"images/" + game.getHolding(2).getPieces().get(i).getImage()
-						+ "_sm.png")));
-			i++;
-		}
-		i = 0;
-		while(i < game.getHolding(3).getPieces().size()){
 				hold4[i/4][i%4].setIcon(new ImageIcon(getClass().getResource(
-						"images/" + game.getHolding(3).getPieces().get(i).getImage()
+						"images/" + game.getHolding(1).getPieces().get(i).getImage()
 						+ "_sm.png")));
 			i++;
 		}
@@ -268,16 +268,16 @@ public class GUI extends TimerTask {
 					state = 0;
 				} else {
 					// captured
-					int h;
+					int h = 4; //it should change or something went wrong.
 					Piece captured = game.getBoard(board).getPiece(row, column);
 					if (board == 0 && captured.getColor() == 0)
-						h = 1;
-					else if (board == 0)
-						h = 3;
-					else if (board == 1 && captured.getColor() == 0)
 						h = 2;
-					else
+					else if (board == 0 && captured.getColor() == 1)
+						h = 1;
+					else if (board == 1 && captured.getColor() == 0)
 						h = 0;
+					else if (board == 1 && captured.getColor() == 1)
+						h = 3;
 					game.passToHolding(captured, game.getHolding(h));
 					game.getBoard(board).removePiece(row, column);
 					game.move(board, savedRow, savedColumn, row, column);

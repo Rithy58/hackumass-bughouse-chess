@@ -35,7 +35,7 @@ public class GUI extends TimerTask {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setResizable(false);
-		frame.setBounds(0, 0, 1200, 425);
+		frame.setBounds(0, 0, 1100, 425);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
@@ -47,7 +47,7 @@ public class GUI extends TimerTask {
 		JPanel space = new JPanel();
 		space.setBackground(Color.PINK);
 		space.setLayout(new GridLayout(2, 2));
-		space.setBounds(400, 0, 400, 400);
+		space.setBounds(400, 0, 300, 400);
 		frame.getContentPane().add(space);
 
 		JPanel holding1 = new JPanel();
@@ -111,7 +111,7 @@ public class GUI extends TimerTask {
 
 		Panel panel_1 = new Panel();
 		panel_1.setLayout(new GridLayout(8, 8));
-		panel_1.setBounds(800,0,400,400);
+		panel_1.setBounds(700,0,400,400);
 		frame.getContentPane().add(panel_1);
 
 		for (int i = 0; i < Constants.BOARD_SIZE; i++) {

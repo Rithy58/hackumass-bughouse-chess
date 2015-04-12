@@ -5,11 +5,25 @@ import javax.swing.*;
 import util.Constants;
 
 public class GUI {
-
 	public JFrame frame;
-
-
-
+	
+	/**
+	 * Initialize image icons
+	 */
+	ImageIcon blank = new ImageIcon("blank.png");
+	ImageIcon black_bishop = new ImageIcon(getClass().getResource("black_bishop.png"));
+	ImageIcon black_king = new ImageIcon("black_king.png");
+	ImageIcon black_knight = new ImageIcon("black_knight.png");
+	ImageIcon black_pawn = new ImageIcon("black_pawn.png");
+	ImageIcon black_queen = new ImageIcon("black_queen.png");
+	ImageIcon black_rook = new ImageIcon("black_rook.png");
+	ImageIcon white_bishop = new ImageIcon("white_bishop.png");
+	ImageIcon white_king = new ImageIcon("white_king.png");
+	ImageIcon white_knight = new ImageIcon("white_knight.png");
+	ImageIcon white_pawn = new ImageIcon("white_pawn.png");
+	ImageIcon white_queen = new ImageIcon("white_queen.png");
+	ImageIcon white_rock = new ImageIcon("white_rock.png");
+	
 	/**
 	 * Create the application.
 	 */

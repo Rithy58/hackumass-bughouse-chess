@@ -10,19 +10,37 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 
+import util.Constants;
 import board.Game;
 
 public class Server implements Communicator {
 
-	private ServerSocket broadcastSocket = null;
-	private ServerSocket serverSocket = null;
+	ServerSocket broadcastSocket = null;
+	ServerSocket serverSocket = null;
 
-	private ArrayList<Socket> clientSockets = null;
-	private ArrayList<ObjectOutputStream> objOutputs = null;
-	private ArrayList<ObjectInputStream> objInputs = null;
+	ArrayList<Socket> clientSockets = null;
+	ArrayList<ObjectOutputStream> objOutputs = null;
+	ArrayList<ObjectInputStream> objInputs = null;
 
 	private Game game = null;
 	private int writeCount = 0;
+	
+	public Server() {
+		try {
+			serverSocket = new ServerSocket(Constants.PORT);
+			clientSockets = new ArrayList<Socket>();
+			objOutputs = new ArrayList<ObjectOutputStream>();
+			objInputs = new ArrayList<ObjectInputStream>();
+		
+			new Thread(new Accepter()).start();
+			broadcastSocket = new ServerSocket(Constants.BROADCAST_PORT);
+		
+			new Thread(new Broadcast()).start();
+		} catch (IOException e) {
+			System.err.println("Theres always an exception for a rule.\nError code: Richard was too dumb to notice he didn't have a constructor.");
+			e.printStackTrace();
+		}
+	}
 
 	public Object getNextObject(int client) {
 		Object ret = null;
@@ -70,7 +88,7 @@ public class Server implements Communicator {
 				}
 			} catch (IOException e) {
 				System.err
-						.println("Reset is broken.\nError code: Richard is too tired to code properly.");
+				.println("Reset is broken.\nError code: Richard is too tired to code properly.");
 				e.printStackTrace();
 			}
 		}
@@ -93,8 +111,21 @@ public class Server implements Communicator {
 			serverSocket.close();
 		} catch (IOException e) {
 			System.err
-					.println("Sockets failed to close.\nError code: Richard really needs his sleep.");
+			.println("Sockets failed to close.\nError code: Richard really needs his sleep.");
 			e.printStackTrace();
+		}
+	}
+
+	public void cleanUp(){
+		int size = clientSockets.size();
+		for(int i = 0; i < size; i++) {
+			if(clientSockets.get(i) == null){
+				objOutputs.remove(i);
+				objInputs.remove(i);
+				clientSockets.remove(i);
+				size--;
+				i--;
+			}
 		}
 	}
 
@@ -124,8 +155,9 @@ public class Server implements Communicator {
 
 	class Accepter implements Runnable {
 		public void run() {
+			System.out.println("Starting...");
 			int numClients = 0;
-			while (numClients <= 3) {
+			while (true) {
 				try {
 					System.out.println("\nWaiting for Client!");
 					Socket client = serverSocket.accept();

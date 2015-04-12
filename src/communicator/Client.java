@@ -18,7 +18,7 @@ public class Client implements Communicator {
 	private ObjectOutputStream objOutput = null;
 	private ObjectInputStream objInput = null;
 
-	int writeCount = 0;
+	private int writeCount = 0;
 
 	public Client(String ip) {
 		HOST = ip;

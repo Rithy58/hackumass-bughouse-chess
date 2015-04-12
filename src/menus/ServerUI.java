@@ -65,7 +65,7 @@ public class ServerUI extends JFrame {
 					System.out
 							.println("Try typing a number next time; using default players");
 				}
-				// TODO ready up?
+				game.ready();
 				setVisible(false);
 			}
 		});
@@ -90,6 +90,7 @@ public class ServerUI extends JFrame {
 
 	private class InitializeGame implements Runnable {
 		public void run() {
+			game.initServer();
 		}
 	}
 }

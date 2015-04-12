@@ -79,5 +79,9 @@ public class GUI {
 		}
 
 	}
+	
+	private void startGame(){
+		
+	}
 
 }

@@ -25,7 +25,9 @@ public class Holding implements Serializable{
 	public Piece removePiece(Piece piece) {
 		if (pieces.indexOf(piece) < 0)
 			return null;
-		return pieces.get(pieces.indexOf(piece));
+		Piece ret = pieces.get(pieces.indexOf(piece));
+		pieces.remove(piece);
+		return ret;
 	}
 
 	public List<Piece> getPieces() {

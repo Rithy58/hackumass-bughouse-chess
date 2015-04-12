@@ -11,8 +11,6 @@ import piece.*;
 import board.Game;
 import util.Constants;
 
-import javax.swing.border.SoftBevelBorder;
-import javax.swing.border.BevelBorder;
 import javax.swing.border.LineBorder;
 
 public class GUI extends TimerTask {
@@ -20,6 +18,7 @@ public class GUI extends TimerTask {
 	private Game game;
 	private int state;
 	private int savedRow, savedColumn;
+	private Piece savedPiece;
 	private JButton[][] pieces = new JButton[Constants.BOARD_SIZE][Constants.BOARD_SIZE];
 	private JButton[][] pieces2 = new JButton[Constants.BOARD_SIZE][Constants.BOARD_SIZE];
 	private JButton[][] hold1 = new JButton[Constants.BOARD_SIZE][4];
@@ -85,6 +84,7 @@ public class GUI extends TimerTask {
 				hold1[i][j] = new JButton();
 				holding1.add(hold1[i][j]);
 				hold1[i][j].setBackground(new Color(230, 230, 250));
+				hold1[i][j].addActionListener(new HoldingButtonListener(3, i, j));
 			}
 		}
 
@@ -100,6 +100,7 @@ public class GUI extends TimerTask {
 				hold2[i][j] = new JButton();
 				holding2.add(hold2[i][j]);
 				hold2[i][j].setBackground(new Color(250, 250, 210));
+				hold2[i][j].addActionListener(new HoldingButtonListener(2, i, j));
 			}
 		}
 
@@ -113,6 +114,7 @@ public class GUI extends TimerTask {
 				hold3[i][j] = new JButton();
 				holding3.add(hold3[i][j]);
 				hold3[i][j].setBackground(new Color(240, 255, 240));
+				hold3[i][j].addActionListener(new HoldingButtonListener(0, i, j));
 			}
 		}
 
@@ -127,6 +129,7 @@ public class GUI extends TimerTask {
 				hold4[i][j] = new JButton();
 				holding4.add(hold4[i][j]);
 				hold4[i][j].setBackground(new Color(255, 240, 245));
+				hold4[i][j].addActionListener(new HoldingButtonListener(1, i, j));
 			}
 		}
 
@@ -261,7 +264,7 @@ public class GUI extends TimerTask {
 					savedColumn = column;
 					state = 1;
 				}
-			} else {
+			} else if(state == 1){
 				if (game.getBoard(board).getPiece(row, column) == null) {
 					// move
 					game.move(board, savedRow, savedColumn, row, column);
@@ -284,7 +287,30 @@ public class GUI extends TimerTask {
 					state = 0;
 
 				}
+			} else if(state == 2){
+				game.getBoard(board).placePiece(savedPiece, row, column);
+				state = 0;
 			}
+		}
+	}
+	
+	private class HoldingButtonListener implements ActionListener {
+		private int holding,i,j;
+
+		public HoldingButtonListener(int holding, int i, int j) {
+			this.holding = holding;
+			this.i = i;
+			this.j = j;
+		}
+
+		public void actionPerformed(ActionEvent e) {
+			savedPiece = game.getHolding(holding).getPieces().get(i * 4 + j);
+			game.getHolding(holding).removePiece(savedPiece);
+			hold1[game.getHolding(3).getPieces().size()/4][game.getHolding(3).getPieces().size()%4].setIcon(null);
+			hold2[game.getHolding(2).getPieces().size()/4][game.getHolding(2).getPieces().size()%4].setIcon(null);
+			hold3[game.getHolding(0).getPieces().size()/4][game.getHolding(0).getPieces().size()%4].setIcon(null);
+			hold4[game.getHolding(1).getPieces().size()/4][game.getHolding(1).getPieces().size()%4].setIcon(null);
+			state = 2;
 		}
 	}
 

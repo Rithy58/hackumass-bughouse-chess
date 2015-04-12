@@ -7,5 +7,12 @@ Authors:
 * SeihakRithy Muth
 
 Basic Project Goals:
+4 players, 2 per team
+Playable over local network
 
 Stretch Project Goals:
+Restart game
+Win condition
+Hosting on server
+Pass data using JSON
+Rules enforcement

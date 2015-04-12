@@ -15,9 +15,9 @@ public class GUIMain {
 			public void run() {
 				try {
 					GUI window = new GUI();
-					window.frame.setVisible(true);
-					Timer timer = new Timer();
-					timer.scheduleAtFixedRate(window, 0, 100);
+//					window.frame.setVisible(true);
+//					Timer timer = new Timer();
+//					timer.scheduleAtFixedRate(window, 0, 100);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

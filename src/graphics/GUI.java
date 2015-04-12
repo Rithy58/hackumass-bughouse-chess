@@ -34,7 +34,6 @@ public class GUI extends TimerTask {
 		initialize();
 		game = new Game();
 		game.init();
-		this.frame.setVisible(true);
 		Timer timer = new Timer();
 		timer.scheduleAtFixedRate(this, 0, 100);
 	}
@@ -161,6 +160,7 @@ public class GUI extends TimerTask {
 		lblBughouseChess.setFont(new Font("Algerian", Font.BOLD, 60));
 		lblBughouseChess.setBounds(178, 75, 742, 93);
 		frame.getContentPane().add(lblBughouseChess);
+		frame.setVisible(true);
 
 		for (int i = 0; i < Constants.BOARD_SIZE; i++) {
 			for (int j = 0; j < Constants.BOARD_SIZE; j++) {

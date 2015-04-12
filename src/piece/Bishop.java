@@ -51,5 +51,13 @@ public class Bishop extends Piece {
 		// TODO Auto-generated method stub
 		this.promoted = promoted;
 	}
+	
+	public String getImage(){
+		if(color == 0){
+			return "white_bishop";
+		} else {
+			return "black_bishop";
+		}
+	}
 
 }

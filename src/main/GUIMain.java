@@ -1,10 +1,7 @@
 package main;
 
 import graphics.GUI;
-
 import java.awt.EventQueue;
-
-import javax.swing.JFrame;
 
 public class GUIMain {
 
@@ -17,6 +14,7 @@ public class GUIMain {
 				try {
 					GUI window = new GUI();
 					window.frame.setVisible(true);
+					window.update();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

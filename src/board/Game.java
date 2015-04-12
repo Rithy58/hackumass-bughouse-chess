@@ -20,6 +20,25 @@ public class Game {
 				holdings[i][j] = new Holding(null);
 		}
 	}
+	
+	public void init(){
+		for(Board b : boards){
+			b = new Board();
+		}
+		boards[0].setTurn(1);
+		boards[1].setTurn(3);
+		for(int i = 0; i < Constants.BOARD_SIZE; i++){
+			
+		}
+		for(int i = 0; i < Constants.BOARD_SIZE; i++){
+			
+		}
+		for(Holding[] hArray : holdings){
+			for(Holding h : hArray){
+				h = new Holding(null);
+			}
+		}
+	}
 
 	public void move(int b, int iRow, int iColumn, int fRow, int fColumn) {
 		boards[b].placePiece(boards[b].removePiece(iRow, iColumn), fRow, fColumn);

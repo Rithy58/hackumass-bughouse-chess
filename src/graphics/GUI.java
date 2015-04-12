@@ -15,11 +15,13 @@ public class GUI {
 	private int board2Turn;
 	private int state;
 	private int savedRow, savedColumn;
+	private JButton[][] pieces = new JButton[Constants.BOARD_SIZE][Constants.BOARD_SIZE];
+	private JButton[][] pieces2 = new JButton[Constants.BOARD_SIZE][Constants.BOARD_SIZE];
 
 	/**
 	 * Initialize image icons
 	 */
-	ImageIcon blank = new ImageIcon(getClass().getResource("blank.png"));
+	/*ImageIcon blank = new ImageIcon(getClass().getResource("blank.png"));
 	ImageIcon black_bishop = new ImageIcon(getClass().getResource(
 			"black_bishop.png"));
 	ImageIcon black_king = new ImageIcon(getClass().getResource(
@@ -43,13 +45,14 @@ public class GUI {
 	ImageIcon white_queen = new ImageIcon(getClass().getResource(
 			"white_queen.png"));
 	ImageIcon white_rook = new ImageIcon(getClass().getResource(
-			"white_rook.png"));
+			"white_rook.png"));*/
 
 	/**
 	 * Create the application.
 	 */
 	public GUI() {
 		initialize();
+		game = new Game();
 	}
 
 	/**
@@ -134,7 +137,7 @@ public class GUI {
 		panel_1.setLayout(new GridLayout(8, 8));
 		frame.getContentPane().add(panel_1);
 
-		JButton[][] pieces = new JButton[Constants.BOARD_SIZE][Constants.BOARD_SIZE];
+		
 		for (int i = 0; i < Constants.BOARD_SIZE; i++) {
 			for (int j = 0; j < Constants.BOARD_SIZE; j++) {
 				pieces[i][j] = new JButton();
@@ -147,7 +150,7 @@ public class GUI {
 			}
 		}
 
-		JButton[][] pieces2 = new JButton[Constants.BOARD_SIZE][Constants.BOARD_SIZE];
+		
 		for (int i = 0; i < Constants.BOARD_SIZE; i++) {
 			for (int j = 0; j < Constants.BOARD_SIZE; j++) {
 				pieces2[i][j] = new JButton();
@@ -160,6 +163,22 @@ public class GUI {
 			}
 		}
 
+	}
+	
+	public void update(){
+		while(true){
+			for (int i = 0; i < Constants.BOARD_SIZE; i++) {
+				for (int j = 0; j < Constants.BOARD_SIZE; j++) {
+					if(game.getBoard(0).getPiece(i, j) == null){
+						pieces[i][j].setIcon(new ImageIcon(getClass().getResource("null.png")));
+					} else {
+						pieces[i][j].setIcon(new ImageIcon(getClass().getResource(
+								game.getBoard(0).getPiece(i,j).getImage() + ".png")));
+					}
+					
+				}
+			}
+		}
 	}
 
 	private class ButtonListener implements ActionListener {

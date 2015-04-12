@@ -51,5 +51,12 @@ public class King extends Piece {
 		// TODO Auto-generated method stub
 		this.promoted = promoted;
 	}
+	public String getImage(){
+		if(color == 0){
+			return "white_king";
+		} else {
+			return "black_king";
+		}
+	}
 
 }

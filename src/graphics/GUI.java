@@ -9,6 +9,9 @@ import javax.swing.*;
 import piece.*;
 import board.Game;
 import util.Constants;
+import javax.swing.border.SoftBevelBorder;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.LineBorder;
 
 public class GUI extends TimerTask {
 	public JFrame frame;
@@ -31,25 +34,34 @@ public class GUI extends TimerTask {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
+		frame = new JFrame("HackUMass - Bughouse Chess");
+		frame.getContentPane().setBackground(new Color(128, 0, 0));
 		frame.setResizable(false);
-		frame.setBounds(0, 0, 1000, 430);
+		frame.setBounds(0, 0, 1105, 800);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		
+		JLabel lblPlayer = new JLabel("Player 1");
+		lblPlayer.setForeground(new Color(245, 255, 250));
+		lblPlayer.setFont(new Font("AR JULIAN", Font.BOLD, 24));
+		lblPlayer.setHorizontalAlignment(SwingConstants.CENTER);
+		lblPlayer.setBounds(20, 194, 400, 50);
+		frame.getContentPane().add(lblPlayer);
 
 		Panel panel = new Panel();
 		panel.setLayout(new GridLayout(8, 8));
-		panel.setBounds(0, 0, 400, 400);
+		panel.setBounds(20, 250, 400, 400);
 		frame.getContentPane().add(panel);
 
 		JPanel space = new JPanel();
 		space.setBackground(Color.PINK);
 		space.setLayout(new GridLayout(2, 2));
-		space.setBounds(400, 0, 200, 400);
+		space.setBounds(450, 250, 200, 400);
 		frame.getContentPane().add(space);
 
 		JPanel holding1 = new JPanel();
-		holding1.setBackground(Color.GREEN);
+		holding1.setBorder(new LineBorder(new Color(0, 0, 0)));
+		holding1.setBackground(new Color(128, 128, 128));
 		holding1.setLayout(new GridLayout(8, 4));
 		space.add(holding1);
 
@@ -58,12 +70,13 @@ public class GUI extends TimerTask {
 			for (int j = 0; j < 4; j++) {
 				hold1[i][j] = new JButton();
 				holding1.add(hold1[i][j]);
-				hold1[i][j].setBackground(Color.green);
+				hold1[i][j].setBackground(new Color(230, 230, 250));
 			}
 		}
 
 		JPanel holding2 = new JPanel();
-		holding2.setBackground(Color.MAGENTA);
+		holding2.setBorder(new LineBorder(new Color(0, 0, 0)));
+		holding2.setBackground(new Color(128, 128, 128));
 		holding2.setLayout(new GridLayout(8, 4));
 		space.add(holding2);
 
@@ -72,12 +85,13 @@ public class GUI extends TimerTask {
 			for (int j = 0; j < 4; j++) {
 				hold2[i][j] = new JButton();
 				holding2.add(hold2[i][j]);
-				hold2[i][j].setBackground(Color.magenta);
+				hold2[i][j].setBackground(new Color(250, 250, 210));
 			}
 		}
 
 		JPanel holding3 = new JPanel();
-		holding3.setBackground(Color.ORANGE);
+		holding3.setBorder(new LineBorder(new Color(0, 0, 0)));
+		holding3.setBackground(new Color(128, 128, 128));
 		holding3.setLayout(new GridLayout(8, 4));
 		space.add(holding3);
 		JButton[][] hold3 = new JButton[Constants.BOARD_SIZE][4];
@@ -85,12 +99,13 @@ public class GUI extends TimerTask {
 			for (int j = 0; j < 4; j++) {
 				hold3[i][j] = new JButton();
 				holding3.add(hold3[i][j]);
-				hold3[i][j].setBackground(Color.orange);
+				hold3[i][j].setBackground(new Color(240, 255, 240));
 			}
 		}
 
 		JPanel holding4 = new JPanel();
-		holding4.setBackground(Color.PINK);
+		holding4.setBorder(new LineBorder(new Color(0, 0, 0)));
+		holding4.setBackground(new Color(128, 128, 128));
 		holding4.setLayout(new GridLayout(8, 4));
 		space.add(holding4);
 
@@ -99,14 +114,42 @@ public class GUI extends TimerTask {
 			for (int j = 0; j < 4; j++) {
 				hold4[i][j] = new JButton();
 				holding4.add(hold4[i][j]);
-				hold4[i][j].setBackground(Color.pink);
+				hold4[i][j].setBackground(new Color(255, 240, 245));
 			}
 		}
 
 		Panel panel_1 = new Panel();
 		panel_1.setLayout(new GridLayout(8, 8));
-		panel_1.setBounds(600, 0, 400, 400);
+		panel_1.setBounds(680, 250, 400, 400);
 		frame.getContentPane().add(panel_1);
+		
+		JLabel label = new JLabel("Player 4");
+		label.setHorizontalAlignment(SwingConstants.CENTER);
+		label.setForeground(new Color(245, 255, 250));
+		label.setFont(new Font("AR JULIAN", Font.BOLD, 24));
+		label.setBounds(680, 656, 400, 50);
+		frame.getContentPane().add(label);
+		
+		JLabel lblNewLabel_1 = new JLabel("Player 3");
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_1.setForeground(new Color(245, 255, 250));
+		lblNewLabel_1.setFont(new Font("AR JULIAN", Font.BOLD, 24));
+		lblNewLabel_1.setBounds(20, 656, 400, 50);
+		frame.getContentPane().add(lblNewLabel_1);
+		
+		JLabel lblNewLabel = new JLabel("Player 2");
+		lblNewLabel.setFont(new Font("AR JULIAN", Font.BOLD, 24));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setForeground(new Color(245, 255, 250));
+		lblNewLabel.setBounds(680, 194, 400, 50);
+		frame.getContentPane().add(lblNewLabel);
+		
+		JLabel lblBughouseChess = new JLabel("Bughouse Chess");
+		lblBughouseChess.setHorizontalAlignment(SwingConstants.CENTER);
+		lblBughouseChess.setForeground(new Color(245, 255, 250));
+		lblBughouseChess.setFont(new Font("Algerian", Font.BOLD, 60));
+		lblBughouseChess.setBounds(178, 75, 742, 93);
+		frame.getContentPane().add(lblBughouseChess);
 
 		for (int i = 0; i < Constants.BOARD_SIZE; i++) {
 			for (int j = 0; j < Constants.BOARD_SIZE; j++) {
@@ -114,7 +157,7 @@ public class GUI extends TimerTask {
 				panel.add(pieces[i][j]);
 				pieces[i][j].addActionListener(new ButtonListener(0, i, j));
 				if ((i + j) % 2 == 0) {
-					pieces[i][j].setBackground(Color.red);
+					pieces[i][j].setBackground(new Color(222, 184, 135));
 				} else
 					pieces[i][j].setBackground(Color.white);
 			}
@@ -126,7 +169,7 @@ public class GUI extends TimerTask {
 				panel_1.add(pieces2[i][j]);
 				pieces2[i][j].addActionListener(new ButtonListener(1, i, j));
 				if ((i + j) % 2 == 0) {
-					pieces2[i][j].setBackground(Color.cyan);
+					pieces2[i][j].setBackground(Color.pink);
 				} else
 					pieces2[i][j].setBackground(Color.white);
 			}
